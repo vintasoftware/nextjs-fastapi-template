@@ -1,0 +1,35 @@
+fail_fast: true
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.6.0
+  hooks:
+    - id: check-added-large-files
+    - id: check-byte-order-marker
+    - id: check-case-conflict
+    - id: check-merge-conflict
+    - id: check-symlinks
+    - id: debug-statements
+    - id: detect-private-key
+- repo: https://github.com/psf/black
+  rev: 22.10.0
+  hooks:
+  - id: black
+- repo: https://github.com/pycqa/isort
+  rev: 5.13.2
+  hooks:
+    - id: isort
+- repo: https://github.com/PyCQA/autoflake
+  rev: v2.3.1
+  hooks:
+  - id: autoflake
+    args: [--remove-all-unused-imports, --in-place]
+- repo: https://github.com/PyCQA/bandit
+  rev: 1.7.9
+  hooks:
+  - id: bandit
+- repo: https://github.com/PyCQA/prospector
+  rev: 1.5.1
+  hooks:
+  - id: prospector
+    args:
+      - -messages-only -X
