@@ -51,6 +51,11 @@ jobs:
         working-directory: ./fastapi_backend
         run: poetry run pytest
 
+      - name: Coveralls GitHub Action
+        uses: coverallsapp/github-action@v2.3.4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
   build-frontend:
     name: Next.js CI
 
