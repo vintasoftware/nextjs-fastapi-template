@@ -49,7 +49,7 @@ jobs:
 
       - name: Run tests
         working-directory: ./fastapi_backend
-        run: poetry run pytest
+        run: poetry run coverage run -m pytest
 
       - name: Coveralls GitHub Action
         uses: coverallsapp/github-action@v2.3.4
