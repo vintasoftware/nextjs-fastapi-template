@@ -2,7 +2,6 @@
   "version": 2,
   "functions": {
     "app/main.py": {
-      "runtime": "python3"
     }
   }
 }
