@@ -2,6 +2,7 @@
   "version": 2,
   "functions": {
     "app/main.py": {
+      "handler": "main.app"
     }
   }
 }
