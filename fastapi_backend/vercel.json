@@ -1,8 +1,8 @@
-{
-  "version": 2,
+ {
   "functions": {
     "app/main.py": {
-      "handler": "main.app"
+      "memory": 3009,
+      "maxDuration": 30
     }
   }
 }
