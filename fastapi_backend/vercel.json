@@ -2,7 +2,7 @@
   "builds": [
     {
       "src": "app/main.py",
-      "use":  "@vercel/python"
+      "use": "@vercel/python"
     }
   ],
   "routes": [
@@ -10,5 +10,6 @@
       "src": "/(.*)",
       "dest": "app/main.py"
     }
-  ]
+  ],
+  "buildCommand": "pip install -r requirements.txt && alembic upgrade head"
 }
