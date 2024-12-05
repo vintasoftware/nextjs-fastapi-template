@@ -11,5 +11,5 @@
       "dest": "app/main.py"
     }
   ],
-  "buildCommand": "pip install -r requirements.txt && alembic upgrade head"
+  "buildCommand": "pip install -r requirements.txt && alembic -c alembic.ini upgrade head --verbose"
 }
