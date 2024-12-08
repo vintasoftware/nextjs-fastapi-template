@@ -77,7 +77,7 @@ export default function Page() {
               Don&apos;t have an account?{" "}
               <Link
                 href="/register"
-                className="underline text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-500"
+                className="text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-500"
               >
                 Sign up
               </Link>

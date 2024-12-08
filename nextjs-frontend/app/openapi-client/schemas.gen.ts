@@ -106,6 +106,84 @@ export const HTTPValidationErrorSchema = {
   title: "HTTPValidationError",
 } as const;
 
+export const ItemCreateSchema = {
+  properties: {
+    name: {
+      type: "string",
+      title: "Name",
+    },
+    description: {
+      anyOf: [
+        {
+          type: "string",
+        },
+        {
+          type: "null",
+        },
+      ],
+      title: "Description",
+    },
+    quantity: {
+      anyOf: [
+        {
+          type: "integer",
+        },
+        {
+          type: "null",
+        },
+      ],
+      title: "Quantity",
+    },
+  },
+  type: "object",
+  required: ["name"],
+  title: "ItemCreate",
+} as const;
+
+export const ItemReadSchema = {
+  properties: {
+    name: {
+      type: "string",
+      title: "Name",
+    },
+    description: {
+      anyOf: [
+        {
+          type: "string",
+        },
+        {
+          type: "null",
+        },
+      ],
+      title: "Description",
+    },
+    quantity: {
+      anyOf: [
+        {
+          type: "integer",
+        },
+        {
+          type: "null",
+        },
+      ],
+      title: "Quantity",
+    },
+    id: {
+      type: "string",
+      format: "uuid",
+      title: "Id",
+    },
+    user_id: {
+      type: "string",
+      format: "uuid",
+      title: "User Id",
+    },
+  },
+  type: "object",
+  required: ["name", "id", "user_id"],
+  title: "ItemRead",
+} as const;
+
 export const UserCreateSchema = {
   properties: {
     email: {

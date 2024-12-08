@@ -83,7 +83,7 @@ export default function Page() {
             <div className="mt-4 text-center text-sm text-gray-600 dark:text-gray-400">
               <Link
                 href="/login"
-                className="underline text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-500"
+                className="text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-500"
               >
                 Back to login
               </Link>
