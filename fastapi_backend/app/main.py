@@ -13,7 +13,7 @@ app = FastAPI(generate_unique_id_function=simple_generate_unique_route_id)
 origins = [
     # "http://localhost:3000",
     # "http://localhost:8080",
-    "nextjs-fastapi-template-frontend.vercel.app"
+    "https://nextjs-fastapi-template-frontend.vercel.app"
 ]
 #
 app.add_middleware(
