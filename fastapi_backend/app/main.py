@@ -10,19 +10,19 @@ from .utils import simple_generate_unique_route_id
 app = FastAPI(generate_unique_id_function=simple_generate_unique_route_id)
 
 
-# origins = [
-#     "http://localhost:3000",
-#     "http://localhost:8080",
-#     "https://nextjs-fastapi-template-frontend.vercel.app/"
-# ]
+origins = [
+    # "http://localhost:3000",
+    # "http://localhost:8080",
+    "nextjs-fastapi-template-frontend.vercel.app"
+]
 #
-# app.add_middleware(
-#     CORSMiddleware,
-#     allow_origins=origins,
-#     allow_credentials=True,
-#     allow_methods=["*"],
-#     allow_headers=["*"],
-# )
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 app.include_router(
