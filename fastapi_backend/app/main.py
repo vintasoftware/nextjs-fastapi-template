@@ -1,5 +1,6 @@
-from fastapi import Depends, FastAPI
+from fastapi import Depends, FastAPI, Request
 from pydantic import BaseModel
+import json
 
 from .database import User
 from .schemas import UserCreate, UserRead, UserUpdate
@@ -63,6 +64,14 @@ async def authenticated_route(user: User = Depends(current_active_user)):
 class HelloRequest(BaseModel):
     name: str
 
+
+# Custom dependency to print request body
+async def log_request_body(request: Request):
+    body = await request.body()  # Read the raw request body
+    print(f"Request body: {body.decode()}")
+    return body  # You can return it if needed for further processing
+
 @app.post("/hello", tags=["hello"])
-async def hello(request: HelloRequest):
+async def hello(request: HelloRequest, body: bytes = Depends(log_request_body)):
+    # The body is already printed by the dependency, so no need to print here again
     return {"message": f"Hello {request.name}!"}
