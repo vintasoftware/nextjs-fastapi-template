@@ -174,3 +174,7 @@ export type UsersDeleteUserError = unknown | HTTPValidationError;
 export type AuthenticatedRouteResponse = unknown;
 
 export type AuthenticatedRouteError = unknown;
+
+export type HelloResponse = unknown;
+
+export type HelloError = unknown;

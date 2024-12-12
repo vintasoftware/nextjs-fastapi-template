@@ -698,6 +698,25 @@
           }
         ]
       }
+    },
+    "/hello": {
+      "post": {
+        "tags": [
+          "hello"
+        ],
+        "summary": "Hello",
+        "operationId": "hello",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {

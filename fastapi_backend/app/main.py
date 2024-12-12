@@ -55,3 +55,8 @@ app.include_router(
 @app.get("/authenticated-route", tags=["custom-auth"])
 async def authenticated_route(user: User = Depends(current_active_user)):
     return {"message": f"Hello {user.email}!"}
+
+
+@app.post("/hello", tags=["hello"])
+async def hello():
+    return {"message": f"Hello Anderson!"}

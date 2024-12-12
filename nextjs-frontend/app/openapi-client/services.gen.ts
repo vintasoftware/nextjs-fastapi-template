@@ -43,6 +43,8 @@ import type {
   UsersDeleteUserResponse,
   AuthenticatedRouteError,
   AuthenticatedRouteResponse,
+  HelloError,
+  HelloResponse,
 } from "./types.gen";
 
 export const client = createClient(createConfig());
@@ -257,5 +259,21 @@ export const authenticatedRoute = <ThrowOnError extends boolean = false>(
   >({
     ...options,
     url: "/authenticated-route",
+  });
+};
+
+/**
+ * Hello
+ */
+export const hello = <ThrowOnError extends boolean = false>(
+  options?: Options<unknown, ThrowOnError>,
+) => {
+  return (options?.client ?? client).post<
+    HelloResponse,
+    HelloError,
+    ThrowOnError
+  >({
+    ...options,
+    url: "/hello",
   });
 };

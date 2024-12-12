@@ -2,7 +2,7 @@
 
 import { cookies } from "next/headers";
 
-import { authJwtLogin } from "@/app/clientService";
+import { authJwtLogin, hello } from "@/app/clientService";
 import { redirect } from "next/navigation";
 import { loginSchema } from "@/lib/definitions";
 
@@ -24,10 +24,10 @@ export async function login(prevState: {}, formData: FormData) {
       password,
     },
   };
-  const { data, error } = await authJwtLogin(input);
+  const { data, error } = await hello(input);
   if (error) {
     return { message: `${error.detail}` };
   }
-  (await cookies()).set("accessToken", data.access_token);
+  // (await cookies()).set("accessToken", data.access_token);
   redirect(`/dashboard`);
 }
