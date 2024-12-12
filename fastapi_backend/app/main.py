@@ -65,11 +65,22 @@ class HelloRequest(BaseModel):
     name: str
 
 
-# Custom dependency to print request body
 async def log_request_body(request: Request):
-    body = await request.body()  # Read the raw request body
-    print(f"Request body: {body.decode()}")
-    return body  # You can return it if needed for further processing
+    # Log the HTTP method and URL
+    method = request.method
+    url = str(request.url)
+
+    # Log headers (some headers may contain sensitive data, be cautious)
+    headers = dict(request.headers)
+
+    # Log the raw request body
+    body = await request.body()
+
+    print(f"Request received: {method} {url}")
+    print(f"Headers: {json.dumps(headers, indent=2)}")
+    print(f"Body: {body.decode()}")  # Decoding to make it readable
+
+    return body
 
 @app.post("/hello", tags=["hello"])
 async def hello(request: HelloRequest, body: bytes = Depends(log_request_body)):
