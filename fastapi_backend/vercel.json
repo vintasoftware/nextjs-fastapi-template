@@ -1,6 +1,6 @@
 {
   "functions": {
-    "app/main.py": {
+    "main.py": {
       "maxDuration": 30
     }
   },
