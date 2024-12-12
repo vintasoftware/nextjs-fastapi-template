@@ -44,6 +44,7 @@ export async function login(prevState: {}, formData: FormData) {
   headers: {
     "Content-Type": "application/json", // Ensure JSON content type
     "Accept": "application/json, text/plain, */*", // Accept all responses (matching the first request)
+    "sec-fetch-mode": "no-cors",
     // Optional headers like those from the first request can be included as needed
     // "x-vercel-ja4-digest": "t13d531000_ed6c8d7875f9_518fb456ca59",
     // "x-vercel-id": "gru1:iad1::vb52n-1734042177044-6fd61c2c3802",
