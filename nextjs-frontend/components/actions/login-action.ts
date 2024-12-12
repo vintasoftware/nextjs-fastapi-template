@@ -24,10 +24,10 @@ export async function login(prevState: {}, formData: FormData) {
       password,
     },
   };
-  await hello(input);
-  // if (error) {
-  //   return { message: `${error.detail}` };
-  // }
+  const { error } = await hello(input);
+  if (error) {
+    return { message: "failed" };
+  }
   // (await cookies()).set("accessToken", data.access_token);
   redirect(`/dashboard`);
 }
