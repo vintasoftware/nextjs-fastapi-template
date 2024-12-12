@@ -38,10 +38,16 @@ export async function login(prevState: {}, formData: FormData) {
 
 
   const input = {
-    body: {
-     name: "Anderson"
-    },
-  };
+  body: {
+    name: "Anderson",
+  },
+  headers: {
+    "Content-Type": "application/json", // Ensure JSON content type
+    "Accept": "application/json", // Define accept header as in the first request
+    // "x-vercel-ja4-digest": "t13d531000_ed6c8d7875f9_518fb456ca59", // (Optional) Use similar headers from the first request
+    // "x-vercel-id": "gru1:iad1::vb52n-1734042177044-6fd61c2c3802", // (Optional) Use similar headers
+  }
+};
   const { error } = await hello(input);
   console.log("Request payload:", input);
   console.log("Request payload:", error);
