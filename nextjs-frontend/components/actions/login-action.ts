@@ -15,7 +15,7 @@ export async function login(prevState: {}, formData: FormData) {
     return { errors: validatedFields.error.flatten().fieldErrors };
   }
 
-  const { username, password } = validatedFields.data;
+  // const { username, password } = validatedFields.data;
 
   const input = {
     body: {
