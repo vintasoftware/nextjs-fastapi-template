@@ -1,8 +1,7 @@
 "use server";
 
-import { cookies } from "next/headers";
 
-import { authJwtLogin, hello } from "@/app/clientService";
+import { hello } from "@/app/clientService";
 import { redirect } from "next/navigation";
 import { loginSchema } from "@/lib/definitions";
 
