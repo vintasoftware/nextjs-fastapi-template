@@ -23,6 +23,7 @@ export async function login(prevState: {}, formData: FormData) {
     },
   };
   const { error } = await hello(input);
+  console.log("Request payload:", input);
   if (error) {
     return { message: "failed" };
   }
