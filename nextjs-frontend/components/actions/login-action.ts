@@ -30,7 +30,7 @@ export async function login(prevState: {}, formData: FormData) {
     console.log('Response:', response.data);
   } catch (error) {
 
-    // console.error('Error:', error.response ? error.response.data : error.message);
+    console.error('Error:', error);
     return { message: "failed" };
   }
 
