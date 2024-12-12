@@ -1,4 +1,5 @@
 from fastapi import Depends, FastAPI
+from pydantic import BaseModel
 
 from .database import User
 from .schemas import UserCreate, UserRead, UserUpdate
@@ -57,6 +58,11 @@ async def authenticated_route(user: User = Depends(current_active_user)):
     return {"message": f"Hello {user.email}!"}
 
 
+
+
+class HelloRequest(BaseModel):
+    name: str
+
 @app.post("/hello", tags=["hello"])
-async def hello():
-    return {"message": f"Hello Anderson!"}
+async def hello(request: HelloRequest):
+    return {"message": f"Hello {request.name}!"}

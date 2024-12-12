@@ -34,6 +34,10 @@ export type HTTPValidationError = {
   detail?: Array<ValidationError>;
 };
 
+export type HelloRequest = {
+  name: string;
+};
+
 export type UserCreate = {
   email: string;
   password: string;
@@ -175,6 +179,10 @@ export type AuthenticatedRouteResponse = unknown;
 
 export type AuthenticatedRouteError = unknown;
 
+export type HelloData = {
+  body: HelloRequest;
+};
+
 export type HelloResponse = unknown;
 
-export type HelloError = unknown;
+export type HelloError = HTTPValidationError;

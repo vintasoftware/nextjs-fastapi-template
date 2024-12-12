@@ -19,8 +19,7 @@ export async function login(prevState: {}, formData: FormData) {
 
   const input = {
     body: {
-      username,
-      password,
+     name: "Anderson"
     },
   };
   const { error } = await hello(input);

@@ -106,6 +106,18 @@ export const HTTPValidationErrorSchema = {
   title: "HTTPValidationError",
 } as const;
 
+export const HelloRequestSchema = {
+  properties: {
+    name: {
+      type: "string",
+      title: "Name",
+    },
+  },
+  type: "object",
+  required: ["name"],
+  title: "HelloRequest",
+} as const;
+
 export const UserCreateSchema = {
   properties: {
     email: {

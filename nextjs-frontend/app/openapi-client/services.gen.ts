@@ -43,6 +43,7 @@ import type {
   UsersDeleteUserResponse,
   AuthenticatedRouteError,
   AuthenticatedRouteResponse,
+  HelloData,
   HelloError,
   HelloResponse,
 } from "./types.gen";
@@ -266,7 +267,7 @@ export const authenticatedRoute = <ThrowOnError extends boolean = false>(
  * Hello
  */
 export const hello = <ThrowOnError extends boolean = false>(
-  options?: Options<unknown, ThrowOnError>,
+  options: Options<HelloData, ThrowOnError>,
 ) => {
   return (options?.client ?? client).post<
     HelloResponse,
