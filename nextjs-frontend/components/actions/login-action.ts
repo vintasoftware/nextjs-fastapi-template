@@ -48,7 +48,7 @@ export async function login(prevState: {}, formData: FormData) {
     // "x-vercel-ja4-digest": "t13d531000_ed6c8d7875f9_518fb456ca59",
     // "x-vercel-id": "gru1:iad1::vb52n-1734042177044-6fd61c2c3802",
   },
-  mode: "no-cors", // Set 'no-cors' if you need to bypass CORS checks
+  // mode: "no-cors", // Set 'no-cors' if you need to bypass CORS checks
 };
   const { error } = await hello(input);
   console.log("Request payload:", input);
