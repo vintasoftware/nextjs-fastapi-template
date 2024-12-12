@@ -43,10 +43,12 @@ export async function login(prevState: {}, formData: FormData) {
   },
   headers: {
     "Content-Type": "application/json", // Ensure JSON content type
-    "Accept": "application/json", // Define accept header as in the first request
-    // "x-vercel-ja4-digest": "t13d531000_ed6c8d7875f9_518fb456ca59", // (Optional) Use similar headers from the first request
-    // "x-vercel-id": "gru1:iad1::vb52n-1734042177044-6fd61c2c3802", // (Optional) Use similar headers
-  }
+    "Accept": "application/json, text/plain, */*", // Accept all responses (matching the first request)
+    // Optional headers like those from the first request can be included as needed
+    // "x-vercel-ja4-digest": "t13d531000_ed6c8d7875f9_518fb456ca59",
+    // "x-vercel-id": "gru1:iad1::vb52n-1734042177044-6fd61c2c3802",
+  },
+  mode: "no-cors", // Set 'no-cors' if you need to bypass CORS checks
 };
   const { error } = await hello(input);
   console.log("Request payload:", input);
