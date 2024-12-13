@@ -1,0 +1,10 @@
+{
+  "functions": {
+    "app/**/*.{js,ts}": {
+      "runtime": "edge"
+    },
+    "components/**/*.{js,ts}": {
+      "runtime": "edge"
+    }
+  }
+}
