@@ -5,8 +5,6 @@ import { hello } from "@/app/clientService";
 import { redirect } from "next/navigation";
 import { loginSchema } from "@/lib/definitions";
 
-export const runtime = 'edge';
-
 
 export async function login(prevState: {}, formData: FormData) {
   const validatedFields = loginSchema.safeParse({
