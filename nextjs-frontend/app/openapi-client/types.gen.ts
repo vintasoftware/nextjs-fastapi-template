@@ -206,7 +206,3 @@ export type DeleteItemData = {
 export type DeleteItemResponse = unknown;
 
 export type DeleteItemError = HTTPValidationError;
-
-export type AuthenticatedRouteResponse = unknown;
-
-export type AuthenticatedRouteError = unknown;

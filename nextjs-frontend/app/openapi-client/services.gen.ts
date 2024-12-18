@@ -49,8 +49,6 @@ import type {
   DeleteItemData,
   DeleteItemError,
   DeleteItemResponse,
-  AuthenticatedRouteError,
-  AuthenticatedRouteResponse,
 } from "./types.gen";
 
 export const client = createClient(createConfig());
@@ -297,21 +295,5 @@ export const deleteItem = <ThrowOnError extends boolean = false>(
   >({
     ...options,
     url: "/items/{item_id}",
-  });
-};
-
-/**
- * Authenticated Route
- */
-export const authenticatedRoute = <ThrowOnError extends boolean = false>(
-  options?: Options<unknown, ThrowOnError>,
-) => {
-  return (options?.client ?? client).get<
-    AuthenticatedRouteResponse,
-    AuthenticatedRouteError,
-    ThrowOnError
-  >({
-    ...options,
-    url: "/authenticated-route",
   });
 };

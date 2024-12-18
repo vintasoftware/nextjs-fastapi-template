@@ -31,6 +31,4 @@ class ItemRead(ItemBase):
     id: UUID
     user_id: UUID
 
-    class Config:
-        orm_mode = True
-        from_attributes = True
+    model_config = {"from_attributes": True}
