@@ -18,7 +18,6 @@ describe("Register Page", () => {
 
     expect(screen.getByLabelText(/email/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/password/i)).toBeInTheDocument();
-
     expect(
       screen.getByRole("button", { name: /sign up/i }),
     ).toBeInTheDocument();
@@ -38,18 +37,17 @@ describe("Register Page", () => {
     fireEvent.change(passwordInput, { target: { value: "@1231231%a" } });
     fireEvent.click(submitButton);
 
-    await waitFor(() => {});
-
-    const formData = new FormData();
-    formData.set("email", "testuser@example.com");
-    formData.set("password", "@1231231%a");
-    expect(register).toHaveBeenCalledWith({ message: "" }, formData);
+    await waitFor(() => {
+      const formData = new FormData();
+      formData.set("email", "testuser@example.com");
+      formData.set("password", "@1231231%a");
+      expect(register).toHaveBeenCalledWith(undefined, formData);
+    });
   });
 
-  it("displays error message if register fails", async () => {
-    // Mock a failed register
+  it("displays server validation error if register fails", async () => {
     (register as jest.Mock).mockResolvedValue({
-      message: "REGISTER_USER_ALREADY_EXISTS",
+      server_validation_error: "User already exists",
     });
 
     render(<Page />);
@@ -63,15 +61,37 @@ describe("Register Page", () => {
     fireEvent.click(submitButton);
 
     await waitFor(() => {
+      expect(screen.getByText("User already exists")).toBeInTheDocument();
+    });
+  });
+
+  it("displays server error for unexpected errors", async () => {
+    (register as jest.Mock).mockResolvedValue({
+      server_error: "An unexpected error occurred. Please try again later.",
+    });
+
+    render(<Page />);
+
+    const emailInput = screen.getByLabelText(/email/i);
+    const passwordInput = screen.getByLabelText(/password/i);
+    const submitButton = screen.getByRole("button", { name: /sign up/i });
+
+    fireEvent.change(emailInput, { target: { value: "test@test.com" } });
+    fireEvent.change(passwordInput, { target: { value: "@1231231%a" } });
+    fireEvent.click(submitButton);
+
+    await waitFor(() => {
       expect(
-        screen.getByText("REGISTER_USER_ALREADY_EXISTS"),
+        screen.getByText(
+          "An unexpected error occurred. Please try again later.",
+        ),
       ).toBeInTheDocument();
     });
 
     const formData = new FormData();
-    formData.set("email", "already@already.com");
+    formData.set("email", "test@test.com");
     formData.set("password", "@1231231%a");
-    expect(register).toHaveBeenCalledWith({ message: "" }, formData);
+    expect(register).toHaveBeenCalledWith(undefined, formData);
   });
 
   it("displays validation errors if password and email are invalid", async () => {
@@ -113,6 +133,6 @@ describe("Register Page", () => {
     const formData = new FormData();
     formData.set("email", "email@email.com");
     formData.set("password", "invalid_password");
-    expect(register).toHaveBeenCalledWith({ message: "" }, formData);
+    expect(register).toHaveBeenCalledWith(undefined, formData);
   });
 });

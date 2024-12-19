@@ -50,7 +50,9 @@ describe("register action", () => {
         password: "Q12341414#",
       },
     });
-    expect(result).toEqual({ message: "REGISTER_USER_ALREADY_EXISTS" });
+    expect(result).toEqual({
+      server_validation_error: "REGISTER_USER_ALREADY_EXISTS",
+    });
   });
 
   it("should return an validation error if the form is invalid", async () => {
