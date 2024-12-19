@@ -64,7 +64,6 @@ async def authenticated_route(user: User = Depends(current_active_user)):
 class HelloRequest(BaseModel):
     name: str
 
-@app.middleware("http")
 async def log_request_body(request: Request):
     # Log the HTTP method and URL
     method = request.method
@@ -81,6 +80,15 @@ async def log_request_body(request: Request):
     print(f"Body: {body.decode()}")  # Decoding to make it readable
 
     return body
+
+@app.middleware("http")
+async def log_requests(request: Request, call_next):
+    # Log request details
+    body = await log_request_body(request)
+
+    # Call the next middleware or endpoint
+    response = await call_next(request)
+    return response
 
 @app.post("/hello", tags=["hello"])
 async def hello(request: HelloRequest, body: bytes = Depends(log_request_body)):
