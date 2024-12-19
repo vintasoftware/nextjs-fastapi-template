@@ -9,4 +9,14 @@ const configureClient = () => {
   });
 };
 
+client.interceptors.request.use((request, options) => {
+  const jsonBody = JSON.stringify(options.body);
+  const contentLength = Buffer.byteLength(jsonBody).toString()
+  if (contentLength) {
+    request.headers.set("Content-Length", contentLength);
+  }
+
+  return request;
+});
+
 configureClient();
