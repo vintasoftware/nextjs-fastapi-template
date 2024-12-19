@@ -27,7 +27,7 @@ export async function register(prevState: {}, formData: FormData) {
   };
 
   // Serialize the body for Content-Length calculation
-  const jsonBody = JSON.stringify(requestBody);
+  // const jsonBody = JSON.stringify(requestBody);
 
   // Prepare input with the correct body type and headers
   const input = {
