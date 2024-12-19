@@ -64,7 +64,7 @@ async def authenticated_route(user: User = Depends(current_active_user)):
 class HelloRequest(BaseModel):
     name: str
 
-
+@app.middleware("http")
 async def log_request_body(request: Request):
     # Log the HTTP method and URL
     method = request.method
