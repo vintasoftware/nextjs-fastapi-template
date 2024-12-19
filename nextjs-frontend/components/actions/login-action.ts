@@ -86,7 +86,10 @@ export async function login(prevState: {}, formData: FormData) {
     headers: {
     "Content-Type": "application/json", // Ensure JSON content type
     "Accept": "application/json, text/plain, */*", // Accept all responses (matching the first request)
-    "Content-Length": JSON.stringify({ name: "Anderson" }).length,
+    "Content-Length": JSON.stringify({
+      username,
+      password,
+    }).length,
   },
   };
   const { data, error } = await authJwtLogin(input);
