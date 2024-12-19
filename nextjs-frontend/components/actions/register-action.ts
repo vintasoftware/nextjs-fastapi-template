@@ -43,6 +43,7 @@ export async function register(prevState: {}, formData: FormData) {
   const { error } = await registerRegister(input);
 
   if (error) {
+    console.error(error)
     return { message: getErrorMessage(error) };
   }
 
