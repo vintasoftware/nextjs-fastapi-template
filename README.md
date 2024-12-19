@@ -5,58 +5,83 @@
 
 ## Table of Contents
 * [About](#about)
+* [Share your project!](#share-your-project)
 * [Local Setup](#local-setup)
   * [Installing Required Tools](#installing-required-tools)
+    * [1. Poetry](#1-poetry)
+    * [2. Node.js, npm and pnpm](#2-nodejsm-npm-and-pnpm)
+    * [3. Docker](#3-docker)
+    * [4. Docker Compose](#4-docker-compose)
   * [Setting Up Environment Variables](#setting-up-environment-variables)
   * [If you are not using Docker](#if-you-are-not-using-docker)
     * [Backend](#backend)
     * [Frontend](#frontend)
   * [If you are using Docker](#if-you-are-using-docker)
 * [Pre-Commit Setup](#pre-commit-setup)
+  * [Installing and Activating Pre-Commit Hooks](#installing-and-activating-pre-commit-hooks)
+  * [Running Pre-Commit Checks](#running-pre-commit-checks)
+  * [Updating Pre-Commit Hooks](#updating-pre-commit-hooks)
 * [Running the Application](#running-the-application)
 * [Watchers](#watchers)
   * [Recommended Approach](#recommended-approach-run-both-watchers-and-servers-simultaneously)
   * [Manual Execution of Watcher Commands](#manual-execution-of-watcher-commands)
+* [Testing](#testing)
+* [Alembic migrations](#alembic-migrations)
 * [Makefile](#makefile)
 * [Important Considerations](#important-considerations)
+* [Contributing](#contributing)
+* [Commercial Support](#commercial-support)
 
 ## About
 This template streamlines building APIs with [FastAPI](https://fastapi.tiangolo.com/) and dynamic frontends with [Next.js](https://nextjs.org/). It integrates the backend and frontend using [@hey-api/openapi-ts](https://github.com/hey-ai/openapi-ts) to generate a type-safe client, with automated watchers to keep the OpenAPI schema and client updated, ensuring a smooth and synchronized development workflow.  
 
 - [Next.js](https://nextjs.org/): Fast, SEO-friendly frontend framework  
 - [FastAPI](https://fastapi.tiangolo.com/): High-performance Python backend  
+- [SQLAlchemy](https://www.sqlalchemy.org/): Powerful Python SQL toolkit and ORM
+- [PostgreSQL](https://www.postgresql.org/): Advanced open-source relational database
+- [Pydantic](https://docs.pydantic.dev/): Data validation and settings management using Python type annotations
 - [Zod](https://zod.dev/) + [TypeScript](https://www.typescriptlang.org/): End-to-end type safety and schema validation  
-- [fastapi-users](https://fastapi-users.github.io/fastapi-users/): Built-in authentication and user management  
+- [fastapi-users](https://fastapi-users.github.io/fastapi-users/): Complete authentication system with:
+  - Secure password hashing by default
+  - JWT (JSON Web Token) authentication
+  - Email-based password recovery
+- [Shadcn/ui](https://ui.shadcn.com/): Beautiful and customizable React components
 - [OpenAPI-fetch](https://github.com/Hey-AI/openapi-fetch): Fully typed client generation from OpenAPI schema  
+- [fastapi-mail](https://sabuhish.github.io/fastapi-mail/): Efficient email handling for FastAPI applications
+- [Poetry](https://python-poetry.org/): Dependency management and packaging made easy
+- [Pytest](https://docs.pytest.org/): Powerful Python testing framework
+- Code Quality Tools:
+  - [Ruff](https://github.com/astral-sh/ruff): Fast Python linter
+  - [ESLint](https://eslint.org/): JavaScript/TypeScript code quality
 - Watchers:  
   - Backend: [Watchdog](https://github.com/gorakhargosh/watchdog) for monitoring file changes  
   - Frontend: [Chokidar](https://github.com/paulmillr/chokidar) for live updates  
-- [Docker](https://www.docker.com/): Consistent environments for development and production  
+- [Docker](https://www.docker.com/) and [Docker Compose](https://docs.docker.com/compose/): Consistent environments for development and production  
 - [Pre-commit hooks](https://pre-commit.com/): Enforce code quality with automated checks  
 - [OpenAPI JSON schema](https://swagger.io/specification/): Centralized API documentation and client generation  
 
-With this setup, you’ll save time and maintain a seamless connection between your backend and frontend, boosting productivity and reliability.  
+With this setup, you'll save time and maintain a seamless connection between your backend and frontend, boosting productivity and reliability.  
 
-## Local Setup
+
+## Share your project!
+
+Several people have leveraged our template to start spinoffs or to boost their efforts in the challenging pursuit of securing funding. Starting with a solid foundation allows you to create more resilient products and focus on what really matters: discovering and delivering value to your customers. If you are one of those people, we're eager to help you even more! We can spread the word about your project across our social media platforms, giving you access to a broader audience.
+
+Send us an email at contact@vintasoftware.com telling us a bit more about how our template helped you boost your project.
+
+
+## Setup
 
 ### Installing Required Tools
 
 #### 1. Poetry
 Poetry is used to manage Python dependencies in the backend. Install Poetry by following the [official installation guide](https://python-poetry.org/docs/#installation).
 
-Once installed, navigate to the `fastapi_backend` directory and run:
-
-```bash
-poetry install
-```
-
-#### 2. Node.js and npm
+#### 2. Node.jsm, npm and pnpm
 Ensure Node.js and npm are installed for running the frontend. Follow the [Node.js installation guide](https://nodejs.org/en/download/).
-
-Install the frontend dependencies by navigating to the `nextjs-frontend` directory and running:
-
+After that install pnpm by running:
 ```bash
-npm install
+npm install -g pnpm
 ```
 
 #### 3. Docker
@@ -106,7 +131,11 @@ OPENAPI_OUTPUT_FILE=openapi.json
 To run the project locally, use the following commands:
 
 #### Backend
-1. Navigate to the `fastapi_backend` directory.
+
+1. Navigate to the `fastapi_backend` directory and run:
+   ```bash
+   poetry install
+   ```
 2. Use Docker to run the database to avoid local installation issues. Build and start the database container:
    ```bash
    docker compose build db
@@ -122,12 +151,11 @@ To run the project locally, use the following commands:
    ```
 
 #### Frontend
-1. Navigate to the `nextjs-frontend` directory.
-2. Install dependencies (if not already installed):
+1. Navigate to the `nextjs-frontend` directory and run:
    ```bash
-   npm install
+   pnpm install
    ```
-3. Start the Next.js development server:
+2. Start the Next.js development server:
    ```bash
    make start-frontend
    ```
@@ -225,6 +253,34 @@ You can manually execute the same commands that the watchers call when they dete
    docker compose run --rm --no-deps -T frontend npm run generate-client
    ```
 
+## Testing
+To run the tests, you need to run the test database container:
+   ```bash
+   make docker-up-test-db
+   ```
+
+Then run the tests locally:
+   ```bash
+   make test-backend
+   make test-frontend
+   ```
+
+Or using Docker:
+   ```bash
+   make docker-test-backend
+   make docker-test-frontend
+   ```
+
+## Alembic migrations
+If you need to create a new migration, you can do it by running:
+   ```bash
+   make docker-db-schema migration_name="add users"
+   ```
+then apply the migration to the database:
+   ```bash
+   make docker-migrate-db
+   ```
+
 ## Makefile
 
 This project includes a `Makefile` that provides a set of commands to simplify common tasks such as starting the backend and frontend servers, running tests, building Docker containers, and more.
@@ -241,3 +297,15 @@ make help
 - **Environment Variables**: Ensure your `.env` files are up-to-date.
 - **Database Setup**: It is recommended to use Docker for running the database, even when running the backend and frontend locally, to simplify configuration and avoid potential conflicts.
 - **Consistency**: It is **not recommended** to switch between running the project locally and using Docker, as this may cause permission issues or unexpected problems. Choose one method and stick with it.
+
+## Contributing
+
+If you wish to contribute to this project, please first discuss the change you wish to make via an [issue](https://github.com/vintasoftware/nextjs-fastapi-template/issues).
+
+Check our [contributing guide](https://github.com/vintasoftware/nextjs-fastapi-template/blob/main/CONTRIBUTING.md) to learn more about our development process and how you can test your changes to the boilerplate.
+
+## Commercial Support
+
+[![alt text](https://avatars2.githubusercontent.com/u/5529080?s=80&v=4 "Vinta Logo")](https://www.vinta.com.br/)
+
+This project is maintained by [Vinta Software](https://www.vinta.com.br/) and is used in products of Vinta's clients. We are always looking for exciting work! If you need any commercial support, feel free to get in touch: contact@vinta.com.br
