@@ -78,17 +78,21 @@ export async function login(prevState: {}, formData: FormData) {
 
   const { username, password } = validatedFields.data;
 
-  const bodyContent = JSON.stringify({
+  // Prepare the body object
+  const body = {
     username,
     password,
-  });
+  };
+
+  // Serialize the body to JSON
+  const serializedBody = JSON.stringify(body);
 
   const input = {
-    body: bodyContent,
+    body: body, // Keep the object here for type compatibility
     headers: {
-      "Content-Type": "application/json", // Ensure JSON content type
+      "Content-Type": "application/json", // JSON content type
       "Accept": "application/json, text/plain, */*", // Accept all responses
-      "Content-Length": Buffer.byteLength(bodyContent), // Correct byte length
+      "Content-Length": Buffer.byteLength(serializedBody).toString(), // Correct byte length
     },
   };
 
