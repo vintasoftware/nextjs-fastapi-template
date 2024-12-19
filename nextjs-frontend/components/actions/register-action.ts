@@ -35,7 +35,7 @@ export async function register(prevState: {}, formData: FormData) {
     headers: {
       "Content-Type": "application/json",
       "Accept": "application/json, text/plain, */*",
-      "Content-Length": Buffer.byteLength(jsonBody).toString(), // Accurate length from serialized JSON
+      //"Content-Length": Buffer.byteLength(jsonBody).toString(), // Accurate length from serialized JSON
     },
   };
 
