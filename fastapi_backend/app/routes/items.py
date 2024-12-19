@@ -19,7 +19,7 @@ async def read_item(
 ):
     result = await db.execute(select(Item).filter(Item.user_id == user.id))
     items = result.scalars().all()
-    return [ItemRead.from_orm(item) for item in items]
+    return [ItemRead.model_validate(item) for item in items]
 
 
 @router.post("/", response_model=ItemRead)

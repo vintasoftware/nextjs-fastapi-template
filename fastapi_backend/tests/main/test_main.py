@@ -74,7 +74,7 @@ class TestPasswordValidation:
             ),
         ],
     )
-    @pytest.mark.asyncio(loop_scope="session")
+    @pytest.mark.asyncio(loop_scope="function")
     async def test_password_validation(
         self, test_client, email, password, expected_status, expected_detail
     ):
@@ -84,7 +84,7 @@ class TestPasswordValidation:
 
         assert response.status_code == expected_status
 
-    @pytest.mark.asyncio(loop_scope="session")
+    @pytest.mark.asyncio(loop_scope="function")
     async def test_register_user_with_valid_password(self, test_client, db_session):
         """Test user registration with success"""
         json = {

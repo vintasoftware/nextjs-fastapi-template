@@ -1,8 +1,7 @@
-from fastapi import Depends, FastAPI
+from fastapi import FastAPI
 
-from .database import User
 from .schemas import UserCreate, UserRead, UserUpdate
-from .users import auth_backend, current_active_user, fastapi_users, AUTH_URL_PATH
+from .users import auth_backend, fastapi_users, AUTH_URL_PATH
 from fastapi.middleware.cors import CORSMiddleware
 from .utils import simple_generate_unique_route_id
 from app.routes.items import router as items_router
@@ -52,8 +51,3 @@ app.include_router(
 )
 
 app.include_router(items_router, prefix="/items")
-
-
-@app.get("/authenticated-route", tags=["custom-auth"])
-async def authenticated_route(user: User = Depends(current_active_user)):
-    return {"message": f"Hello {user.email}!"}
