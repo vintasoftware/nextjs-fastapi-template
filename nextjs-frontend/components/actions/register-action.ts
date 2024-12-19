@@ -20,16 +20,32 @@ export async function register(prevState: {}, formData: FormData) {
 
   const { email, password } = validatedFields.data;
 
+  // Construct the body object
+  const requestBody = {
+    email,
+    password,
+  };
+
+  // Serialize the body for Content-Length calculation
+  const jsonBody = JSON.stringify(requestBody);
+
+  // Prepare input with the correct body type and headers
   const input = {
-    body: {
-      email,
-      password,
+    body: requestBody, // Use the raw object, not a JSON string
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json, text/plain, */*",
+      "Content-Length": Buffer.byteLength(jsonBody).toString(), // Accurate length from serialized JSON
     },
   };
+
+  // Perform the register API call
   const { error } = await registerRegister(input);
+
   if (error) {
     return { message: getErrorMessage(error) };
   }
+
   redirect(`/login`);
 }
 
