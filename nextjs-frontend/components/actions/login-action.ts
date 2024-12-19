@@ -78,24 +78,25 @@ export async function login(prevState: {}, formData: FormData) {
 
   const { username, password } = validatedFields.data;
 
+  const bodyContent = JSON.stringify({
+    username,
+    password,
+  });
+
   const input = {
-    body: {
-      username,
-      password,
-    },
+    body: bodyContent,
     headers: {
-    "Content-Type": "application/json", // Ensure JSON content type
-    "Accept": "application/json, text/plain, */*", // Accept all responses (matching the first request)
-    "Content-Length": JSON.stringify({
-      username,
-      password,
-    }).length,
-  },
+      "Content-Type": "application/json", // Ensure JSON content type
+      "Accept": "application/json, text/plain, */*", // Accept all responses
+      "Content-Length": Buffer.byteLength(bodyContent), // Correct byte length
+    },
   };
+
   const { data, error } = await authJwtLogin(input);
   if (error) {
     return { message: `${error.detail}` };
   }
+
   (await cookies()).set("accessToken", data.access_token);
   redirect(`/dashboard`);
 }
