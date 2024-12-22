@@ -30,12 +30,21 @@ export type ErrorModel = {
       };
 };
 
+export type HelloRequest = {
+  name: string;
+};
+
 export type HTTPValidationError = {
   detail?: Array<ValidationError>;
 };
 
-export type HelloRequest = {
-  name: string;
+export type login = {
+  grant_type?: string | null;
+  username: string;
+  password: string;
+  scope?: string;
+  client_id?: string | null;
+  client_secret?: string | null;
 };
 
 export type UserCreate = {
@@ -66,15 +75,6 @@ export type ValidationError = {
   loc: Array<string | number>;
   msg: string;
   type: string;
-};
-
-export type login = {
-  grant_type?: string | null;
-  username: string;
-  password: string;
-  scope?: string;
-  client_id?: string | null;
-  client_secret?: string | null;
 };
 
 export type AuthJwtLoginData = {

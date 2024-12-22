@@ -3,9 +3,9 @@
 import {
   createClient,
   createConfig,
-  type Options,
+  type OptionsLegacyParser,
   urlSearchParamsBodySerializer,
-} from "@hey-api/client-fetch";
+} from "@hey-api/client-axios";
 import type {
   AuthJwtLoginData,
   AuthJwtLoginError,
@@ -54,7 +54,7 @@ export const client = createClient(createConfig());
  * Auth:Jwt.Login
  */
 export const authJwtLogin = <ThrowOnError extends boolean = false>(
-  options: Options<AuthJwtLoginData, ThrowOnError>,
+  options: OptionsLegacyParser<AuthJwtLoginData, ThrowOnError>,
 ) => {
   return (options?.client ?? client).post<
     AuthJwtLoginResponse,
@@ -75,7 +75,7 @@ export const authJwtLogin = <ThrowOnError extends boolean = false>(
  * Auth:Jwt.Logout
  */
 export const authJwtLogout = <ThrowOnError extends boolean = false>(
-  options?: Options<unknown, ThrowOnError>,
+  options?: OptionsLegacyParser<unknown, ThrowOnError>,
 ) => {
   return (options?.client ?? client).post<
     AuthJwtLogoutResponse,
@@ -91,7 +91,7 @@ export const authJwtLogout = <ThrowOnError extends boolean = false>(
  * Register:Register
  */
 export const registerRegister = <ThrowOnError extends boolean = false>(
-  options: Options<RegisterRegisterData, ThrowOnError>,
+  options: OptionsLegacyParser<RegisterRegisterData, ThrowOnError>,
 ) => {
   return (options?.client ?? client).post<
     RegisterRegisterResponse,
@@ -107,7 +107,7 @@ export const registerRegister = <ThrowOnError extends boolean = false>(
  * Reset:Forgot Password
  */
 export const resetForgotPassword = <ThrowOnError extends boolean = false>(
-  options: Options<ResetForgotPasswordData, ThrowOnError>,
+  options: OptionsLegacyParser<ResetForgotPasswordData, ThrowOnError>,
 ) => {
   return (options?.client ?? client).post<
     ResetForgotPasswordResponse,
@@ -123,7 +123,7 @@ export const resetForgotPassword = <ThrowOnError extends boolean = false>(
  * Reset:Reset Password
  */
 export const resetResetPassword = <ThrowOnError extends boolean = false>(
-  options: Options<ResetResetPasswordData, ThrowOnError>,
+  options: OptionsLegacyParser<ResetResetPasswordData, ThrowOnError>,
 ) => {
   return (options?.client ?? client).post<
     ResetResetPasswordResponse,
@@ -139,7 +139,7 @@ export const resetResetPassword = <ThrowOnError extends boolean = false>(
  * Verify:Request-Token
  */
 export const verifyRequestToken = <ThrowOnError extends boolean = false>(
-  options: Options<VerifyRequestTokenData, ThrowOnError>,
+  options: OptionsLegacyParser<VerifyRequestTokenData, ThrowOnError>,
 ) => {
   return (options?.client ?? client).post<
     VerifyRequestTokenResponse,
@@ -155,7 +155,7 @@ export const verifyRequestToken = <ThrowOnError extends boolean = false>(
  * Verify:Verify
  */
 export const verifyVerify = <ThrowOnError extends boolean = false>(
-  options: Options<VerifyVerifyData, ThrowOnError>,
+  options: OptionsLegacyParser<VerifyVerifyData, ThrowOnError>,
 ) => {
   return (options?.client ?? client).post<
     VerifyVerifyResponse,
@@ -171,7 +171,7 @@ export const verifyVerify = <ThrowOnError extends boolean = false>(
  * Users:Current User
  */
 export const usersCurrentUser = <ThrowOnError extends boolean = false>(
-  options?: Options<unknown, ThrowOnError>,
+  options?: OptionsLegacyParser<unknown, ThrowOnError>,
 ) => {
   return (options?.client ?? client).get<
     UsersCurrentUserResponse,
@@ -187,7 +187,7 @@ export const usersCurrentUser = <ThrowOnError extends boolean = false>(
  * Users:Patch Current User
  */
 export const usersPatchCurrentUser = <ThrowOnError extends boolean = false>(
-  options: Options<UsersPatchCurrentUserData, ThrowOnError>,
+  options: OptionsLegacyParser<UsersPatchCurrentUserData, ThrowOnError>,
 ) => {
   return (options?.client ?? client).patch<
     UsersPatchCurrentUserResponse,
@@ -203,7 +203,7 @@ export const usersPatchCurrentUser = <ThrowOnError extends boolean = false>(
  * Users:User
  */
 export const usersUser = <ThrowOnError extends boolean = false>(
-  options: Options<UsersUserData, ThrowOnError>,
+  options: OptionsLegacyParser<UsersUserData, ThrowOnError>,
 ) => {
   return (options?.client ?? client).get<
     UsersUserResponse,
@@ -219,7 +219,7 @@ export const usersUser = <ThrowOnError extends boolean = false>(
  * Users:Patch User
  */
 export const usersPatchUser = <ThrowOnError extends boolean = false>(
-  options: Options<UsersPatchUserData, ThrowOnError>,
+  options: OptionsLegacyParser<UsersPatchUserData, ThrowOnError>,
 ) => {
   return (options?.client ?? client).patch<
     UsersPatchUserResponse,
@@ -235,7 +235,7 @@ export const usersPatchUser = <ThrowOnError extends boolean = false>(
  * Users:Delete User
  */
 export const usersDeleteUser = <ThrowOnError extends boolean = false>(
-  options: Options<UsersDeleteUserData, ThrowOnError>,
+  options: OptionsLegacyParser<UsersDeleteUserData, ThrowOnError>,
 ) => {
   return (options?.client ?? client).delete<
     UsersDeleteUserResponse,
@@ -251,7 +251,7 @@ export const usersDeleteUser = <ThrowOnError extends boolean = false>(
  * Authenticated Route
  */
 export const authenticatedRoute = <ThrowOnError extends boolean = false>(
-  options?: Options<unknown, ThrowOnError>,
+  options?: OptionsLegacyParser<unknown, ThrowOnError>,
 ) => {
   return (options?.client ?? client).get<
     AuthenticatedRouteResponse,
@@ -267,7 +267,7 @@ export const authenticatedRoute = <ThrowOnError extends boolean = false>(
  * Hello
  */
 export const hello = <ThrowOnError extends boolean = false>(
-  options: Options<HelloData, ThrowOnError>,
+  options: OptionsLegacyParser<HelloData, ThrowOnError>,
 ) => {
   return (options?.client ?? client).post<
     HelloResponse,

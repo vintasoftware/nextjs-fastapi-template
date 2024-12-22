@@ -6,7 +6,7 @@ config({ path: ".env.local" });
 const openapiFile = process.env.OPENAPI_OUTPUT_FILE;
 
 export default defineConfig({
-  client: "@hey-api/client-fetch",
+  client: "@hey-api/client-axios",
   input: openapiFile as string,
   output: {
     format: "prettier",
