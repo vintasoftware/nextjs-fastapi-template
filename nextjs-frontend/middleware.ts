@@ -2,10 +2,6 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { usersCurrentUser } from "@/app/clientService";
 
-export const config = {
-  matcher: ['/dashboard/:path*'],  // Apply middleware only to /dashboard and its subpaths
-};
-
 export async function middleware(request: NextRequest) {
   const token = request.cookies.get("accessToken");
 
@@ -24,6 +20,9 @@ export async function middleware(request: NextRequest) {
   if (error) {
     return NextResponse.redirect(new URL("/login", request.url));
   }
-
   return NextResponse.next();
 }
+
+export const config = {
+  matcher: ["/dashboard/:path*"],
+};
