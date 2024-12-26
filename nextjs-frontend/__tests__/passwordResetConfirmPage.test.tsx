@@ -49,7 +49,7 @@ describe("Password Reset Confirm Page", () => {
 
     // Mock a successful password reset
     (passwordResetConfirm as jest.Mock).mockResolvedValue({
-      message: "Invalid Token",
+      server_validation_error: "Invalid Token",
     });
 
     render(<Page />);
@@ -71,10 +71,7 @@ describe("Password Reset Confirm Page", () => {
     formData.set("password", "P12345678#");
     formData.set("passwordConfirm", "P12345678#");
     formData.set("resetToken", "invalid-mock-token");
-    expect(passwordResetConfirm).toHaveBeenCalledWith(
-      { message: "" },
-      formData,
-    );
+    expect(passwordResetConfirm).toHaveBeenCalledWith(undefined, formData);
   });
   it("displays validation errors if password is invalid and don't match", async () => {
     (useSearchParams as jest.Mock).mockImplementation(() => ({
@@ -103,7 +100,7 @@ describe("Password Reset Confirm Page", () => {
     await waitFor(() => {
       expect(
         screen.getByText(
-          "- Password should contain at least one uppercase letter.",
+          "Password should contain at least one uppercase letter.",
         ),
       ).toBeInTheDocument();
       expect(screen.getByText("Passwords must match.")).toBeInTheDocument();
@@ -113,9 +110,6 @@ describe("Password Reset Confirm Page", () => {
     formData.set("password", "12345678#");
     formData.set("passwordConfirm", "45678#");
     formData.set("resetToken", "mock-token");
-    expect(passwordResetConfirm).toHaveBeenCalledWith(
-      { message: "" },
-      formData,
-    );
+    expect(passwordResetConfirm).toHaveBeenCalledWith(undefined, formData);
   });
 });

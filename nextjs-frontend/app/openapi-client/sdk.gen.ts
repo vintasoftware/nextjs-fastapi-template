@@ -41,11 +41,14 @@ import type {
   UsersDeleteUserData,
   UsersDeleteUserError,
   UsersDeleteUserResponse,
-  AuthenticatedRouteError,
-  AuthenticatedRouteResponse,
-  HelloData,
-  HelloError,
-  HelloResponse,
+  ReadItemError,
+  ReadItemResponse,
+  CreateItemData,
+  CreateItemError,
+  CreateItemResponse,
+  DeleteItemData,
+  DeleteItemError,
+  DeleteItemResponse,
 } from "./types.gen";
 
 export const client = createClient(createConfig());
@@ -248,33 +251,49 @@ export const usersDeleteUser = <ThrowOnError extends boolean = false>(
 };
 
 /**
- * Authenticated Route
+ * Read Item
  */
-export const authenticatedRoute = <ThrowOnError extends boolean = false>(
+export const readItem = <ThrowOnError extends boolean = false>(
   options?: OptionsLegacyParser<unknown, ThrowOnError>,
 ) => {
   return (options?.client ?? client).get<
-    AuthenticatedRouteResponse,
-    AuthenticatedRouteError,
+    ReadItemResponse,
+    ReadItemError,
     ThrowOnError
   >({
     ...options,
-    url: "/authenticated-route",
+    url: "/items/",
   });
 };
 
 /**
- * Hello
+ * Create Item
  */
-export const hello = <ThrowOnError extends boolean = false>(
-  options: OptionsLegacyParser<HelloData, ThrowOnError>,
+export const createItem = <ThrowOnError extends boolean = false>(
+  options: OptionsLegacyParser<CreateItemData, ThrowOnError>,
 ) => {
   return (options?.client ?? client).post<
-    HelloResponse,
-    HelloError,
+    CreateItemResponse,
+    CreateItemError,
     ThrowOnError
   >({
     ...options,
-    url: "/hello",
+    url: "/items/",
+  });
+};
+
+/**
+ * Delete Item
+ */
+export const deleteItem = <ThrowOnError extends boolean = false>(
+  options: OptionsLegacyParser<DeleteItemData, ThrowOnError>,
+) => {
+  return (options?.client ?? client).delete<
+    DeleteItemResponse,
+    DeleteItemError,
+    ThrowOnError
+  >({
+    ...options,
+    url: "/items/{item_id}",
   });
 };

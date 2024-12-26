@@ -19,7 +19,7 @@ class Settings(BaseSettings):
     MAIL_PASSWORD: str | None = None
     MAIL_FROM: str | None = None
     MAIL_SERVER: str | None = None
-    MAIL_PORT: int = 587
+    MAIL_PORT: int | None = None
     MAIL_FROM_NAME: str = "FastAPI template"
     MAIL_STARTTLS: bool = True
     MAIL_SSL_TLS: bool = False

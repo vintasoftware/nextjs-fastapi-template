@@ -6,7 +6,7 @@ jest.mock("next/navigation", () => ({
   redirect: jest.fn(),
 }));
 
-jest.mock("../app/openapi-client/services.gen", () => ({
+jest.mock("../app/openapi-client/sdk.gen", () => ({
   resetResetPassword: jest.fn(),
 }));
 
@@ -48,9 +48,9 @@ describe("passwordReset action", () => {
       error: { detail: "Invalid token" },
     });
 
-    const result = await passwordResetConfirm({}, formData);
+    const result = await passwordResetConfirm(undefined, formData);
 
-    expect(result).toEqual({ message: "Invalid token" });
+    expect(result).toEqual({ server_validation_error: "Invalid token" });
     expect(resetResetPassword).toHaveBeenCalledWith({
       body: { token: "invalid_token", password: "P12345678#" },
     });
@@ -62,7 +62,7 @@ describe("passwordReset action", () => {
     formData.set("password", "12345678#");
     formData.set("passwordConfirm", "45678#");
 
-    const result = await passwordResetConfirm({}, formData);
+    const result = await passwordResetConfirm(undefined, formData);
 
     expect(result).toEqual({
       errors: {
@@ -71,5 +71,22 @@ describe("passwordReset action", () => {
       },
     });
     expect(resetResetPassword).not.toHaveBeenCalledWith();
+  });
+
+  it("should handle unexpected errors and return server error message", async () => {
+    // Mock the resetResetPassword to throw an error
+    const mockError = new Error("Network error");
+    (resetResetPassword as jest.Mock).mockRejectedValue(mockError);
+
+    const formData = new FormData();
+    formData.append("resetToken", "token");
+    formData.append("password", "P12345678#");
+    formData.append("passwordConfirm", "P12345678#");
+
+    const result = await passwordResetConfirm(undefined, formData);
+
+    expect(result).toEqual({
+      server_error: "An unexpected error occurred. Please try again later.",
+    });
   });
 });

@@ -6,7 +6,8 @@ from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 from threading import Timer
 
-WATCHER_REGEX_PATTERN = re.compile(r"(main|schemas)\.py$")
+# Updated regex to include main.py, schemas.py, and all .py files in app/routes
+WATCHER_REGEX_PATTERN = re.compile(r"(main\.py|schemas\.py|routes/.*\.py)$")
 APP_PATH = "app"
 
 
@@ -18,7 +19,7 @@ class MyHandler(FileSystemEventHandler):
 
     def on_modified(self, event):
         if not event.is_directory and WATCHER_REGEX_PATTERN.search(
-            os.path.basename(event.src_path)
+            os.path.relpath(event.src_path, APP_PATH)
         ):
             current_time = time.time()
             if current_time - self.last_modified > 1:

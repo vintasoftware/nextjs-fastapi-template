@@ -50,7 +50,9 @@ describe("register action", () => {
         password: "Q12341414#",
       },
     });
-    expect(result).toEqual({ message: "REGISTER_USER_ALREADY_EXISTS" });
+    expect(result).toEqual({
+      server_validation_error: "REGISTER_USER_ALREADY_EXISTS",
+    });
   });
 
   it("should return an validation error if the form is invalid", async () => {
@@ -70,5 +72,21 @@ describe("register action", () => {
       },
     });
     expect(registerRegister).not.toHaveBeenCalledWith();
+  });
+
+  it("should handle unexpected errors and return server error message", async () => {
+    // Mock the registerRegister to throw an error
+    const mockError = new Error("Network error");
+    (registerRegister as jest.Mock).mockRejectedValue(mockError);
+
+    const formData = new FormData();
+    formData.append("email", "testuser@example.com");
+    formData.append("password", "Password123#");
+
+    const result = await register(undefined, formData);
+
+    expect(result).toEqual({
+      server_error: "An unexpected error occurred. Please try again later.",
+    });
   });
 });

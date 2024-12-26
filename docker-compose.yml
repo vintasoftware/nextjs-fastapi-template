@@ -47,12 +47,19 @@ services:
       - my_network
     environment:
       NODE_ENV: development
-      NEXT_PUBLIC_API_BASE_URL: http://backend:8000
+      API_BASE_URL: http://backend:8000
       OPENAPI_OUTPUT_FILE: ./shared-data/openapi.json
     volumes:
       - ./nextjs-frontend:/app
       - nextjs-node-modules:/app/node_modules
       - ./local-shared-data:/app/shared-data
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+      - "1025:1025" # SMTP server
+      - "8025:8025" # Web UI
+    networks:
+      - my_network
 
 volumes:
   postgres_data:

@@ -30,12 +30,22 @@ export type ErrorModel = {
       };
 };
 
-export type HelloRequest = {
-  name: string;
-};
-
 export type HTTPValidationError = {
   detail?: Array<ValidationError>;
+};
+
+export type ItemCreate = {
+  name: string;
+  description?: string | null;
+  quantity?: number | null;
+};
+
+export type ItemRead = {
+  name: string;
+  description?: string | null;
+  quantity?: number | null;
+  id: string;
+  user_id: string;
 };
 
 export type login = {
@@ -175,14 +185,24 @@ export type UsersDeleteUserResponse = void;
 
 export type UsersDeleteUserError = unknown | HTTPValidationError;
 
-export type AuthenticatedRouteResponse = unknown;
+export type ReadItemResponse = Array<ItemRead>;
 
-export type AuthenticatedRouteError = unknown;
+export type ReadItemError = unknown;
 
-export type HelloData = {
-  body: HelloRequest;
+export type CreateItemData = {
+  body: ItemCreate;
 };
 
-export type HelloResponse = unknown;
+export type CreateItemResponse = ItemRead;
 
-export type HelloError = HTTPValidationError;
+export type CreateItemError = HTTPValidationError;
+
+export type DeleteItemData = {
+  path: {
+    item_id: string;
+  };
+};
+
+export type DeleteItemResponse = unknown;
+
+export type DeleteItemError = HTTPValidationError;

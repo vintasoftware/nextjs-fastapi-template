@@ -41,7 +41,7 @@ describe("login action", () => {
     expect(mockSet).toHaveBeenCalledWith("accessToken", "1245token");
   });
 
-  it("should should return an error if the server call fails", async () => {
+  it("should should return an error if the server validation fails", async () => {
     const formData = new FormData();
     formData.set("username", "invalid@invalid.com");
     formData.set("password", "Q12341414#");
@@ -53,7 +53,7 @@ describe("login action", () => {
       },
     });
 
-    const result = await login({}, formData);
+    const result = await login(undefined, formData);
 
     expect(authJwtLogin).toHaveBeenCalledWith({
       body: {
@@ -62,7 +62,9 @@ describe("login action", () => {
       },
     });
 
-    expect(result).toEqual({ message: "LOGIN_BAD_CREDENTIALS" });
+    expect(result).toEqual({
+      server_validation_error: "LOGIN_BAD_CREDENTIALS",
+    });
 
     expect(cookies).not.toHaveBeenCalled();
   });
@@ -84,5 +86,21 @@ describe("login action", () => {
     });
 
     expect(cookies).not.toHaveBeenCalled();
+  });
+
+  it("should handle unexpected errors and return server error message", async () => {
+    // Mock the authJwtLogin to throw an error
+    const mockError = new Error("Network error");
+    (authJwtLogin as jest.Mock).mockRejectedValue(mockError);
+
+    const formData = new FormData();
+    formData.append("username", "testuser");
+    formData.append("password", "password123");
+
+    const result = await login(undefined, formData);
+
+    expect(result).toEqual({
+      server_error: "An unexpected error occurred. Please try again later.",
+    });
   });
 });
