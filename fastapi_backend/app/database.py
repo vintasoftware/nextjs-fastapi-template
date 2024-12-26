@@ -3,16 +3,14 @@ from typing import AsyncGenerator
 from fastapi import Depends
 from fastapi_users.db import SQLAlchemyUserDatabase
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
+from sqlalchemy.pool import NullPool
 
 from .config import settings
 from .models import Base, User
 
 engine = create_async_engine(
     settings.DATABASE_URL,
-    pool_pre_ping=True,  # 1. Validates connections before use
-    pool_size=1,  # 2. Maximum number of permanent connections
-    max_overflow=0,  # 3. Maximum number of additional connections
-    pool_recycle=1800,  # 4. Maximum age of a connection in seconds
+    poolclass=NullPool,  # Disable connection pooling
     echo=False,
 )
 
