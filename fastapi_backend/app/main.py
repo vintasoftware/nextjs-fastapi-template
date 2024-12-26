@@ -94,3 +94,4 @@ async def authenticated_route(user: User = Depends(current_active_user)):
 # async def hello(request: HelloRequest, body: bytes = Depends(log_request_body)):
 #     # The body is already printed by the dependency, so no need to print here again
 #     return {"message": f"Hello {request.name}!"}
+#
