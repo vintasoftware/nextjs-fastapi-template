@@ -8,7 +8,7 @@ from threading import Timer
 
 # Updated regex to include main.py, schemas.py, and all .py files in app/routes
 WATCHER_REGEX_PATTERN = re.compile(r"(main\.py|schemas\.py|routes/.*\.py)$")
-APP_PATH = "app"
+APP_PATH = "api"
 
 
 class MyHandler(FileSystemEventHandler):
