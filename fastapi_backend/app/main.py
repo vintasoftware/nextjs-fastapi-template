@@ -61,35 +61,35 @@ async def authenticated_route(user: User = Depends(current_active_user)):
 
 
 
-# class HelloRequest(BaseModel):
-#     name: str
-#
-# async def log_request_body(request: Request):
-#     # Log the HTTP method and URL
-#     method = request.method
-#     url = str(request.url)
-#
-#     # Log headers (some headers may contain sensitive data, be cautious)
-#     headers = dict(request.headers)
-#
-#     # Log the raw request body
-#     body = await request.body()
-#
-#     print(f"Request received: {method} {url}")
-#     print(f"Headers: {json.dumps(headers, indent=2)}")
-#     print(f"Body: {body.decode()}")  # Decoding to make it readable
-#
-#     return body
-#
-# @app.middleware("http")
-# async def log_requests(request: Request, call_next):
-#     # Log request details
-#     body = await log_request_body(request)
-#
-#     # Call the next middleware or endpoint
-#     response = await call_next(request)
-#     return response
-#
+class HelloRequest(BaseModel):
+    name: str
+
+async def log_request_body(request: Request):
+    # Log the HTTP method and URL
+    method = request.method
+    url = str(request.url)
+
+    # Log headers (some headers may contain sensitive data, be cautious)
+    headers = dict(request.headers)
+
+    # Log the raw request body
+    body = await request.body()
+
+    print(f"Request received: {method} {url}")
+    print(f"Headers: {json.dumps(headers, indent=2)}")
+    print(f"Body: {body.decode()}")  # Decoding to make it readable
+
+    return body
+
+@app.middleware("http")
+async def log_requests(request: Request, call_next):
+    # Log request details
+    body = await log_request_body(request)
+
+    # Call the next middleware or endpoint
+    response = await call_next(request)
+    return response
+
 # @app.post("/hello", tags=["hello"])
 # async def hello(request: HelloRequest, body: bytes = Depends(log_request_body)):
 #     # The body is already printed by the dependency, so no need to print here again
