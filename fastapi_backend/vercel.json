@@ -1,4 +1,5 @@
 {
+  "buildCommand": "pip install -r requirements.txt && alembic upgrade head",
   "routes": [
     {
       "src": "/(.*)",
