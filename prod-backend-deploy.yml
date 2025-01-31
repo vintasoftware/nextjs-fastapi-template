@@ -23,6 +23,22 @@ jobs:
       - name: Pull Vercel Environment Information
         run: vercel pull --yes --environment=production --local-config=vercel.prod.json --token=${{ secrets.VERCEL_TOKEN }}
 
+      # Pull Vercel environment variables
+      - name: Pull Vercel Environment Information
+        run: vercel env pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+
+      # Install Alembic and other required dependencies
+      - name: Install Alembic and dependencies
+        run: pip install -r requirements.txt
+
+      # Run alembic migration
+      - name: Run alembic migration
+        run: |
+          set -o allexport
+          source .env.local
+          set +o allexport 
+          alembic upgrade head
+
       # Build project artifacts
       - name: Build Project Artifacts
         run: vercel build --prod --local-config=vercel.prod.json --token=${{ secrets.VERCEL_TOKEN }}
@@ -30,3 +46,8 @@ jobs:
       # Deploy project artifacts to Vercel
       - name: Deploy Project Artifacts to Vercel
         run: vercel deploy --prebuilt --prod --archive=split-tgz --local-config=vercel.prod.json --token=${{ secrets.VERCEL_TOKEN }}
+
+
+
+
+
