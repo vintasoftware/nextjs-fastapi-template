@@ -549,10 +549,9 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Pre-Commit Setup">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#installing-and-activating-pre-commit-hooks" class="md-nav__link">
     <span class="md-ellipsis">
       Installing and Activating Pre-Commit Hooks
@@ -560,8 +559,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#localhost-email-server-setup" class="md-nav__link">
     <span class="md-ellipsis">
       Localhost Email Server Setup
@@ -569,8 +568,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#running-pre-commit-checks" class="md-nav__link">
     <span class="md-ellipsis">
       Running Pre-Commit Checks
@@ -578,18 +577,13 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#updating-pre-commit-hooks" class="md-nav__link">
     <span class="md-ellipsis">
       Updating Pre-Commit Hooks
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -609,20 +603,14 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="GitHub Actions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#secrets-configuration" class="md-nav__link">
     <span class="md-ellipsis">
       Secrets Configuration
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -830,10 +818,9 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Pre-Commit Setup">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#installing-and-activating-pre-commit-hooks" class="md-nav__link">
     <span class="md-ellipsis">
       Installing and Activating Pre-Commit Hooks
@@ -841,8 +828,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#localhost-email-server-setup" class="md-nav__link">
     <span class="md-ellipsis">
       Localhost Email Server Setup
@@ -850,8 +837,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#running-pre-commit-checks" class="md-nav__link">
     <span class="md-ellipsis">
       Running Pre-Commit Checks
@@ -859,18 +846,13 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#updating-pre-commit-hooks" class="md-nav__link">
     <span class="md-ellipsis">
       Updating Pre-Commit Hooks
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -890,20 +872,14 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="GitHub Actions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#secrets-configuration" class="md-nav__link">
     <span class="md-ellipsis">
       Secrets Configuration
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -980,7 +956,7 @@
 </code></pre></div></p>
 </li>
 </ol>
-<h2 id="testing">Testing<a class="headerlink" href="#testing" title="Permanent link">&para;</a></h2>
+<h3 id="testing">Testing<a class="headerlink" href="#testing" title="Permanent link">&para;</a></h3>
 <p>To run the tests, you need to run the test database container:
    <div class="highlight"><pre><span></span><code>make<span class="w"> </span>docker-up-test-db
 </code></pre></div></p>
@@ -992,7 +968,7 @@ make<span class="w"> </span>test-frontend
    <div class="highlight"><pre><span></span><code>make<span class="w"> </span>docker-test-backend
 make<span class="w"> </span>docker-test-frontend
 </code></pre></div></p>
-<h2 id="pre-commit-setup">Pre-Commit Setup<a class="headerlink" href="#pre-commit-setup" title="Permanent link">&para;</a></h2>
+<h3 id="pre-commit-setup">Pre-Commit Setup<a class="headerlink" href="#pre-commit-setup" title="Permanent link">&para;</a></h3>
 <p>To maintain code quality and consistency, the project includes two separate pre-commit configuration files:
 - <code>.pre-commit-config.yaml</code> is used to run pre-commit checks locally.
 - <code>.pre-commit-config.docker.yaml</code> is used to run pre-commit checks within Docker.</p>
@@ -1028,14 +1004,14 @@ make<span class="w"> </span>docker-test-frontend
 <p>To update the hooks to their latest versions, run:</p>
 <div class="highlight"><pre><span></span><code>pre-commit<span class="w"> </span>autoupdate
 </code></pre></div>
-<h2 id="alembic-database-migrations">Alembic Database Migrations<a class="headerlink" href="#alembic-database-migrations" title="Permanent link">&para;</a></h2>
+<h3 id="alembic-database-migrations">Alembic Database Migrations<a class="headerlink" href="#alembic-database-migrations" title="Permanent link">&para;</a></h3>
 <p>If you need to create a new Database Migration:
    <div class="highlight"><pre><span></span><code>make<span class="w"> </span>docker-db-schema<span class="w"> </span><span class="nv">migration_name</span><span class="o">=</span><span class="s2">&quot;add users&quot;</span>
 </code></pre></div>
 then apply the migration to the database:
    <div class="highlight"><pre><span></span><code>make<span class="w"> </span>docker-migrate-db
 </code></pre></div></p>
-<h2 id="github-actions">GitHub Actions<a class="headerlink" href="#github-actions" title="Permanent link">&para;</a></h2>
+<h3 id="github-actions">GitHub Actions<a class="headerlink" href="#github-actions" title="Permanent link">&para;</a></h3>
 <p>This project has a pre-configured GitHub Actions setup to enable CI/CD. The workflow configuration files are inside the .github/workflows directory. You can customize these workflows to suit your project's needs better.</p>
 <h3 id="secrets-configuration">Secrets Configuration<a class="headerlink" href="#secrets-configuration" title="Permanent link">&para;</a></h3>
 <p>For the workflows to function correctly, add the secret keys to your GitHub repository's settings. Navigate to Settings &gt; Secrets and variables &gt; Actions and add the following keys:
