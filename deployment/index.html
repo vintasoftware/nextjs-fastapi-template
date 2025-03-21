@@ -927,35 +927,35 @@
 <hr />
 <h3 id="frontend-deployment">Frontend Deployment<a class="headerlink" href="#frontend-deployment" title="Permanent link">&para;</a></h3>
 <p><a href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvintasoftware%2Fnextjs-fastapi-template%2Ftree%2Fmain%2Fnextjs-frontend&amp;env=API_BASE_URL&amp;envDescription=The%20API_BASE_URL%20is%20the%20backend%20URL%20where%20the%20frontend%20sends%20requests."><img alt="Deploy with Vercel" src="https://vercel.com/button" /></a></p>
-<ol>
-<li><strong>Deploying the Frontend</strong>  </li>
+<ul>
 <li>Click the <strong>Frontend</strong> button above to start the deployment process.  </li>
 <li>During deployment, you will be prompted to set the <code>API_BASE_URL</code>. Use a placeholder value (e.g., <code>https://</code>) for now, as this will be updated with the backend URL later.  </li>
 <li>Complete the deployment process <a href="#post-deployment-configuration">here</a>.</li>
-</ol>
+</ul>
 <h3 id="backend-deployment">Backend Deployment<a class="headerlink" href="#backend-deployment" title="Permanent link">&para;</a></h3>
 <p><a href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvintasoftware%2Fnextjs-fastapi-template%2Ftree%2Fmain%2Ffastapi_backend&amp;env=CORS_ORIGINS,ACCESS_SECRET_KEY,RESET_PASSWORD_SECRET_KEY,VERIFICATION_SECRET_KEY&amp;stores=%5B%7B%22type%22%3A%22postgres%22%7D%5D"><img alt="Deploy with Vercel" src="https://vercel.com/button" /></a></p>
-<ol>
-<li><strong>Deploying the Backend</strong>  </li>
+<ul>
 <li>Click the <strong>Backend</strong> button above to begin deployment.</li>
 <li>First, set up the database. The connection is automatically configured, so follow the steps, and it should work by default.</li>
 <li>
 <p>During the deployment process, you will be prompted to configure the following environment variables:</p>
-<ul>
-<li><strong>CORS_ORIGINS</strong>  </li>
+</li>
 <li>
-<p>Set this to <code>["*"]</code> initially to allow all origins. Later, you can update this with the frontend URL.</p>
+<p><strong>CORS_ORIGINS</strong>  </p>
+<ul>
+<li>Set this to <code>["*"]</code> initially to allow all origins. Later, you can update this with the frontend URL.</li>
+</ul>
 </li>
 <li>
 <p><strong>ACCESS_SECRET_KEY</strong>, <strong>RESET_PASSWORD_SECRET_KEY</strong>, <strong>VERIFICATION_SECRET_KEY</strong>  </p>
-</li>
+<ul>
 <li>During deployment, you can temporarily set these secret keys as plain strings (e.g., <code>examplekey</code>). However, you should generate secure keys and update them after the deployment in the <strong>Post-Deployment Configuration</strong> section.</li>
 </ul>
 </li>
 <li>
 <p>Complete the deployment process <a href="#post-deployment-configuration">here</a>.</p>
 </li>
-</ol>
+</ul>
 <h2 id="ci-github-actions-setup-for-production-deployment">CI (GitHub Actions) Setup for Production Deployment<a class="headerlink" href="#ci-github-actions-setup-for-production-deployment" title="Permanent link">&para;</a></h2>
 <p>We provide the <strong>prod-backend-deploy.yml</strong> and <strong>prod-frontend-deploy.yml</strong> files to enable continuous integration through Github Actions. To connect them to GitHub, simply move them to the .github/workflows/ directory.</p>
 <p>You can do it with the following commands:
@@ -1066,7 +1066,7 @@ vercel<span class="w"> </span>link<span class="w"> </span>--local-config<span cl
 <li>You can find the project_id into the vercel web project settings.</li>
 <li>You can find the organization_id into the vercel web organization settings.</li>
 </ul>
-<h2 id="post-deployment-configuration"><strong>Post-Deployment Configuration</strong><a class="headerlink" href="#post-deployment-configuration" title="Permanent link">&para;</a></h2>
+<h2 id="post-deployment-configuration">Post-Deployment Configuration<a class="headerlink" href="#post-deployment-configuration" title="Permanent link">&para;</a></h2>
 <h3 id="frontend">Frontend<a class="headerlink" href="#frontend" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Navigate to the <strong>Settings</strong> page of the deployed frontend project.  </li>
