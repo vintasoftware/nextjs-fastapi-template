@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#getting-started-with-this-template" class="md-skip">
+        <a href="#setup" class="md-skip">
           Skip to content
         </a>
       
@@ -486,15 +486,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#getting-started-with-this-template" class="md-nav__link">
-    <span class="md-ellipsis">
-      Getting Started with This Template
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#setup" class="md-nav__link">
     <span class="md-ellipsis">
       Setup
@@ -797,15 +788,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#getting-started-with-this-template" class="md-nav__link">
-    <span class="md-ellipsis">
-      Getting Started with This Template
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#setup" class="md-nav__link">
     <span class="md-ellipsis">
       Setup
@@ -970,14 +952,10 @@
 
   <h1>Get Started</h1>
 
-<h2 id="getting-started-with-this-template">Getting Started with This Template<a class="headerlink" href="#getting-started-with-this-template" title="Permanent link">&para;</a></h2>
 <p>To use this template for your own project:</p>
 <ol>
 <li>Create a new repository using this template by following GitHub's <a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template#creating-a-repository-from-a-template">template repository guide</a></li>
 <li>Clone your new repository and navigate to it: <code>cd your-project-name</code></li>
-<li>Update this README:</li>
-<li>Change the project name in the first line</li>
-<li>Remove this "Getting Started with This Template" section</li>
 <li>Make sure you have Python 3.12 installed</li>
 </ol>
 <p>Once completed, proceed to the <a href="#setup">Setup</a> section below.</p>
@@ -1000,70 +978,64 @@ After that, install pnpm by running:
 <h4 id="4-docker-compose">4. Docker Compose<a class="headerlink" href="#4-docker-compose" title="Permanent link">&para;</a></h4>
 <p>Ensure <code>docker-compose</code> is installed. Refer to the <a href="https://docs.docker.com/compose/install/">Docker Compose installation guide</a>.</p>
 <h3 id="setting-up-environment-variables">Setting Up Environment Variables<a class="headerlink" href="#setting-up-environment-variables" title="Permanent link">&para;</a></h3>
-<p><strong>Backend (<code>fastapi_backend/.env</code>):</strong>
-Copy the <code>.env.example</code> files to <code>.env</code> and update the variables with your own values.
+<p><strong>Backend (<code>fastapi_backend/.env</code>):</strong></p>
+<p>Copy the <code>.env.example</code> files to <code>.env</code> and update the variables with your own values.
    <div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>fastapi_backend<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>cp<span class="w"> </span>.env.example<span class="w"> </span>.env
 </code></pre></div>
-1. You will only need to update the secret keys. You can use the following command to generate a new secret key:
+You will only need to update the secret keys. You can use the following command to generate a new secret key:
    <div class="highlight"><pre><span></span><code>python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import secrets; print(secrets.token_hex(32))&quot;</span>
-</code></pre></div>
-2. The DATABASE, MAIL, OPENAPI, CORS, and FRONTEND_URL settings are ready to use locally.
-3. The DATABASE and MAIL settings are already configured in Docker Compose if you're using Docker.
-4. The OPENAPI_URL setting is commented out. Uncommenting it will hide the /docs and openapi.json URLs, which is ideal for production.
-5. You can check the .env.example file for more information about the variables.</p>
-<p><strong>Frontend (<code>nextjs-frontend/.env.local</code>):</strong>
-Copy the <code>.env.example</code> files to <code>.env</code>. These values are unlikely to change, so you can leave them as they are.
+</code></pre></div></p>
+<ul>
+<li>
+<p>The DATABASE, MAIL, OPENAPI, CORS, and FRONTEND_URL settings are ready to use locally.</p>
+</li>
+<li>
+<p>The DATABASE and MAIL settings are already configured in Docker Compose if you're using Docker.</p>
+</li>
+<li>
+<p>The OPENAPI_URL setting is commented out. Uncommenting it will hide the /docs and openapi.json URLs, which is ideal for production.</p>
+</li>
+</ul>
+<p>You can check the .env.example file for more information about the variables.</p>
+<p><strong>Frontend (<code>nextjs-frontend/.env.local</code>):</strong></p>
+<p>Copy the <code>.env.example</code> files to <code>.env</code>. These values are unlikely to change, so you can leave them as they are.
    <div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>nextjs-frontend<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>cp<span class="w"> </span>.env.example<span class="w"> </span>.env
 </code></pre></div></p>
 <h3 id="running-the-database">Running the Database<a class="headerlink" href="#running-the-database" title="Permanent link">&para;</a></h3>
-<ol>
-<li>Use Docker to run the database to avoid local installation issues. Build and start the database container:
+<p>Use Docker to run the database to avoid local installation issues. Build and start the database container:
    <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>compose<span class="w"> </span>build<span class="w"> </span>db
 docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d<span class="w"> </span>db
-</code></pre></div></li>
-<li>Run the following command to apply database migrations:
+</code></pre></div>
+Run the following command to apply database migrations:
    <div class="highlight"><pre><span></span><code>make<span class="w"> </span>docker-migrate-db
-</code></pre></div></li>
-</ol>
+</code></pre></div></p>
 <h3 id="build-the-project-without-docker">Build the project (without Docker):<a class="headerlink" href="#build-the-project-without-docker" title="Permanent link">&para;</a></h3>
 <p>To set the project environment locally, use the following commands:</p>
 <h4 id="backend">Backend<a class="headerlink" href="#backend" title="Permanent link">&para;</a></h4>
-<ol>
-<li>Navigate to the <code>fastapi_backend</code> directory and run:
+<p>Navigate to the <code>fastapi_backend</code> directory and run:
    <div class="highlight"><pre><span></span><code>uv<span class="w"> </span>sync
-</code></pre></div></li>
-</ol>
+</code></pre></div></p>
 <h4 id="frontend">Frontend<a class="headerlink" href="#frontend" title="Permanent link">&para;</a></h4>
-<ol>
-<li>Navigate to the <code>nextjs-frontend</code> directory and run:
+<p>Navigate to the <code>nextjs-frontend</code> directory and run:
    <div class="highlight"><pre><span></span><code>pnpm<span class="w"> </span>install
-</code></pre></div></li>
-</ol>
+</code></pre></div></p>
 <h3 id="build-the-project-with-docker">Build the project (with Docker):<a class="headerlink" href="#build-the-project-with-docker" title="Permanent link">&para;</a></h3>
-<ol>
-<li>Build the backend and frontend containers:
+<p>Build the backend and frontend containers:
    <div class="highlight"><pre><span></span><code>make<span class="w"> </span>docker-build
-</code></pre></div></li>
-</ol>
+</code></pre></div></p>
 <h2 id="running-the-application">Running the Application<a class="headerlink" href="#running-the-application" title="Permanent link">&para;</a></h2>
-<p>If you are not using Docker:</p>
-<ol>
-<li>
+<p><strong>If you are not using Docker:</strong></p>
 <p>Start the FastAPI server:
    <div class="highlight"><pre><span></span><code>make<span class="w"> </span>start-backend
 </code></pre></div></p>
-</li>
-<li>
 <p>Start the Next.js development server:
    <div class="highlight"><pre><span></span><code>make<span class="w"> </span>start-frontend
 </code></pre></div></p>
-</li>
-</ol>
-<p>If you are using Docker:
-1. Start the FastAPI server container:
+<p><strong>If you are using Docker:</strong></p>
+<p>Start the FastAPI server container:
    <div class="highlight"><pre><span></span><code>make<span class="w"> </span>docker-start-backend
 </code></pre></div>
-2. Start the Next.js development server container:
+Start the Next.js development server container:
    <div class="highlight"><pre><span></span><code>make<span class="w"> </span>docker-start-frontend
 </code></pre></div></p>
 <ul>
