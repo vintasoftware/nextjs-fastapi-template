@@ -19,7 +19,7 @@
         <link rel="next" href="../support/">
       
       
-      <link rel="icon" href="../images/favicon.svg">
+      <link rel="icon" href="../images/github-favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.9">
     
     
@@ -50,6 +50,8 @@
       
     
     
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -67,7 +69,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -96,7 +98,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href=".." title="nextjs-fastapi-template" class="md-header__button md-logo" aria-label="nextjs-fastapi-template" data-md-component="logo">
       
-  <img src="../images/nav-logo.svg" alt="logo">
+  <img src="../images/nav-logo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -126,7 +128,7 @@
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
     
       <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
@@ -136,7 +138,7 @@
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
     
       <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
@@ -146,7 +148,7 @@
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
     
       <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
@@ -394,7 +396,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href=".." title="nextjs-fastapi-template" class="md-nav__button md-logo" aria-label="nextjs-fastapi-template" data-md-component="logo">
       
-  <img src="../images/nav-logo.svg" alt="logo">
+  <img src="../images/nav-logo.png" alt="logo">
 
     </a>
     nextjs-fastapi-template
@@ -595,9 +597,69 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#pull-requests" class="md-nav__link">
+  <a href="#local-dev-setup" class="md-nav__link">
     <span class="md-ellipsis">
-      Pull requests
+      Local Dev Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Local Dev Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#clone-the-repo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clone the repo
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-pre-commit-hooks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install pre-commit hooks
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#updating-the-openapi-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      Updating the OpenAPI schema
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tests
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documentation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#release" class="md-nav__link">
+    <span class="md-ellipsis">
+      Release
     </span>
   </a>
   
@@ -659,9 +721,69 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#pull-requests" class="md-nav__link">
+  <a href="#local-dev-setup" class="md-nav__link">
     <span class="md-ellipsis">
-      Pull requests
+      Local Dev Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Local Dev Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#clone-the-repo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clone the repo
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-pre-commit-hooks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install pre-commit hooks
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#updating-the-openapi-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      Updating the OpenAPI schema
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tests
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documentation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#release" class="md-nav__link">
+    <span class="md-ellipsis">
+      Release
     </span>
   </a>
   
@@ -687,8 +809,40 @@
 
 
 <h1 id="contributing">Contributing<a class="headerlink" href="#contributing" title="Permanent link">&para;</a></h1>
-<h2 id="pull-requests">Pull requests<a class="headerlink" href="#pull-requests" title="Permanent link">&para;</a></h2>
-<p>Read <a href="https://devchecklists.com/en/checklist/pull-requests-checklist">this checklist</a> for a more detailed guide on best practices for opening pull requests.</p>
+<p>We can always use your help to improve Next.js FastAPI Template! Please feel free to tackle existing <a href="https://github.com/vintasoftware/nextjs-fastapi-template/issues">issues</a>. If you have a new idea, please create a thread on <a href="https://github.com/vintasoftware/django-ai-assistant/discussions">Discussions</a>.</p>
+<p>Please follow this guide to learn more about how to develop and test the project locally, before opening a pull request.</p>
+<h2 id="local-dev-setup">Local Dev Setup<a class="headerlink" href="#local-dev-setup" title="Permanent link">&para;</a></h2>
+<h3 id="clone-the-repo">Clone the repo<a class="headerlink" href="#clone-the-repo" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>git@github.com:vintasoftware/nextjs-fastapi-template.git
+</code></pre></div>
+<p>Check the <a href="../get-started/#setup">Get Started</a> page to complete the setup.</p>
+<h2 id="install-pre-commit-hooks">Install pre-commit hooks<a class="headerlink" href="#install-pre-commit-hooks" title="Permanent link">&para;</a></h2>
+<p>Check the <a href="../additional-settings/#pre-commit-setup">Additional Settings - Install pre-commit hooks</a> section to complete the setup.</p>
+<p>It's critical to run the pre-commit hooks before pushing your code to follow the project's code style, and avoid linting errors.</p>
+<h2 id="updating-the-openapi-schema">Updating the OpenAPI schema<a class="headerlink" href="#updating-the-openapi-schema" title="Permanent link">&para;</a></h2>
+<p>It's critical to update the OpenAPI schema when you make changes to the FastAPI routes or related files:</p>
+<p>Check the <a href="../additional-settings/#manual-execution-of-hot-reload-commands">Additional Settings - Manual execution of hot reload commands</a> section to run the command.</p>
+<h2 id="tests">Tests<a class="headerlink" href="#tests" title="Permanent link">&para;</a></h2>
+<p>Check the <a href="../additional-settings/#testing">Additional Settings - Testing</a> section to run the tests.</p>
+<h2 id="documentation">Documentation<a class="headerlink" href="#documentation" title="Permanent link">&para;</a></h2>
+<p>We use <a href="https://squidfunk.github.io/mkdocs-material/">mkdocs-material</a> to generate the documentation from markdown files.
+Check the files in the <code>docs</code> directory.</p>
+<p>To run the documentation locally, you need to run:</p>
+<div class="highlight"><pre><span></span><code>uv<span class="w"> </span>run<span class="w"> </span>mkdocs<span class="w"> </span>serve
+</code></pre></div>
+<h2 id="release">Release<a class="headerlink" href="#release" title="Permanent link">&para;</a></h2>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>The backend and the frontend are versioned together, that is, they should have the same version number.</p>
+</div>
+<p>To release and publish a new version, follow these steps:</p>
+<ol>
+<li>Update the version in <code>fastapi_backend/pyproject.toml</code>, <code>nextjs-frontend/package.json</code>.</li>
+<li>Update the changelog in <code>CHANGELOG.md</code>.</li>
+<li>Open a PR with the changes.</li>
+<li>Once the PR is merged, run the <a href="https://github.com/vintasoftware/nextjs-fastapi-template/actions/workflows/release.yml">Release GitHub Action</a> to create a draft release.</li>
+<li>Review the draft release, ensure the description has at least the associated changelog entry, and publish it.</li>
+</ol>
 
 
 
