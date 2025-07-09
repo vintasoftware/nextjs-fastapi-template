@@ -1,6 +1,6 @@
 [project]
 name = "app"
-version = "0.0.3"
+version = "0.0.4"
 description = ""
 authors = [{ name = "Anderson Resende", email = "anderson@vinta.com.br" }]
 requires-python = ">=3.12,<3.13"
@@ -11,6 +11,7 @@ dependencies = [
     "fastapi-users[sqlalchemy]>=13.0.0,<14",
     "pydantic-settings>=2.5.2,<3",
     "fastapi-mail>=1.4.1,<2",
+    "fastapi-pagination==0.13.3"
 ]
 
 [dependency-groups]

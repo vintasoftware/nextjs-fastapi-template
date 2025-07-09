@@ -17,9 +17,25 @@ import { DeleteButton } from "./deleteButton";
 import { ReadItemResponse } from "@/app/openapi-client";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { PageSizeSelector } from "@/components/page-size-selector";
+import { PagePagination } from "@/components/page-pagination";
 
-export default async function DashboardPage() {
-  const items = (await fetchItems()) as ReadItemResponse;
+interface DashboardPageProps {
+  searchParams: Promise<{
+    page?: string;
+    size?: string;
+  }>;
+}
+
+export default async function DashboardPage({
+  searchParams,
+}: DashboardPageProps) {
+  const params = await searchParams;
+  const page = Number(params.page) || 1;
+  const size = Number(params.size) || 10;
+
+  const items = (await fetchItems(page, size)) as ReadItemResponse;
+  const totalPages = Math.ceil((items.total || 0) / size);
 
   return (
     <div>
@@ -37,7 +53,11 @@ export default async function DashboardPage() {
       </div>
 
       <section className="p-6 bg-white rounded-lg shadow-lg mt-8">
-        <h2 className="text-xl font-semibold mb-4">Items</h2>
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="text-xl font-semibold">Items</h2>
+          <PageSizeSelector currentSize={size} />
+        </div>
+
         <Table className="min-w-full text-sm">
           <TableHeader>
             <TableRow>
@@ -48,14 +68,14 @@ export default async function DashboardPage() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {!items.length ? (
+            {!items.items?.length ? (
               <TableRow>
                 <TableCell colSpan={4} className="text-center">
                   No results.
                 </TableCell>
               </TableRow>
             ) : (
-              items.map((item, index) => (
+              items.items.map((item, index) => (
                 <TableRow key={index}>
                   <TableCell>{item.name}</TableCell>
                   <TableCell>{item.description}</TableCell>
@@ -78,6 +98,15 @@ export default async function DashboardPage() {
             )}
           </TableBody>
         </Table>
+
+        {/* Pagination Controls */}
+        <PagePagination
+          currentPage={page}
+          totalPages={totalPages}
+          pageSize={size}
+          totalItems={items.total || 0}
+          basePath="/dashboard"
+        />
       </section>
     </div>
   );

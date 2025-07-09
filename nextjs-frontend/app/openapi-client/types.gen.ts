@@ -57,6 +57,14 @@ export type login = {
   client_secret?: string | null;
 };
 
+export type Page_ItemRead_ = {
+  items: Array<ItemRead>;
+  total?: number | null;
+  page: number | null;
+  size: number | null;
+  pages?: number | null;
+};
+
 export type UserCreate = {
   email: string;
   password: string;
@@ -185,9 +193,22 @@ export type UsersDeleteUserResponse = void;
 
 export type UsersDeleteUserError = unknown | HTTPValidationError;
 
-export type ReadItemResponse = Array<ItemRead>;
+export type ReadItemData = {
+  query?: {
+    /**
+     * Page number
+     */
+    page?: number;
+    /**
+     * Page size
+     */
+    size?: number;
+  };
+};
 
-export type ReadItemError = unknown;
+export type ReadItemResponse = Page_ItemRead_;
+
+export type ReadItemError = HTTPValidationError;
 
 export type CreateItemData = {
   body: ItemCreate;
