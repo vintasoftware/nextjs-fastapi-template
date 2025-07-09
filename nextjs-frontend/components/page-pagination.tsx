@@ -31,8 +31,15 @@ export function PagePagination({
   return (
     <div className="flex items-center justify-between my-4">
       <div className="text-sm text-gray-600">
-        Showing {(currentPage - 1) * pageSize + 1} to{" "}
-        {Math.min(currentPage * pageSize, totalItems)} of {totalItems} results
+        {totalItems === 0 ? (
+          <>Showing 0 of 0 results</>
+        ) : (
+          <>
+            Showing {(currentPage - 1) * pageSize + 1} to{" "}
+            {Math.min(currentPage * pageSize, totalItems)} of {totalItems}{" "}
+            results
+          </>
+        )}
       </div>
 
       <div className="flex items-center space-x-2">
@@ -57,14 +64,16 @@ export function PagePagination({
         </Link>
 
         {/* Page Info */}
-        <span className="text-sm font-medium">
-          Page {currentPage} of {totalPages}
-        </span>
+        {totalPages > 0 && (
+          <span className="text-sm font-medium">
+            Page {currentPage} of {totalPages}
+          </span>
+        )}
 
         {/* Next Page */}
         <Link
           href={buildUrl(currentPage + 1)}
-          className={!hasNextPage ? "pointer-events-none opacity-50" : ""}
+          className={hasNextPage ? "" : "pointer-events-none opacity-50"}
         >
           <Button variant="outline" size="sm" disabled={!hasNextPage}>
             <ChevronRightIcon className="h-4 w-4" />
@@ -74,7 +83,7 @@ export function PagePagination({
         {/* Last Page */}
         <Link
           href={buildUrl(totalPages)}
-          className={!hasNextPage ? "pointer-events-none opacity-50" : ""}
+          className={hasNextPage ? "" : "pointer-events-none opacity-50"}
         >
           <Button variant="outline" size="sm" disabled={!hasNextPage}>
             <DoubleArrowRightIcon className="h-4 w-4" />
