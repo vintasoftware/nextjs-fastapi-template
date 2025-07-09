@@ -48,16 +48,31 @@ class TestItems:
         for item_data in items_data:
             await db_session.execute(insert(Item).values(**item_data))
 
-        # Read items
+        await db_session.commit()  # Add commit to ensure items are saved
+
+        # Read items - test pagination response
         read_response = await test_client.get(
             "/items/", headers=authenticated_user["headers"]
         )
         assert read_response.status_code == status.HTTP_200_OK
-        items = read_response.json()
+        response_data = read_response.json()
 
-        assert len(items) == 2
-        assert any(item["name"] == "First Item" for item in items)
-        assert any(item["name"] == "Second Item" for item in items)
+        # Check pagination structure
+        assert "items" in response_data
+        assert "total" in response_data
+        assert "page" in response_data
+        assert "size" in response_data
+
+        items = response_data["items"]
+
+        # Filter items created in this test (to avoid interference from other tests)
+        test_items = [
+            item for item in items if item["name"] in ["First Item", "Second Item"]
+        ]
+
+        assert len(test_items) == 2
+        assert any(item["name"] == "First Item" for item in test_items)
+        assert any(item["name"] == "Second Item" for item in test_items)
 
     @pytest.mark.asyncio(loop_scope="function")
     async def test_delete_item(self, test_client, db_session, authenticated_user):

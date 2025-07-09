@@ -41,6 +41,7 @@ import type {
   UsersDeleteUserData,
   UsersDeleteUserError,
   UsersDeleteUserResponse,
+  ReadItemData,
   ReadItemError,
   ReadItemResponse,
   CreateItemData,
@@ -254,7 +255,7 @@ export const usersDeleteUser = <ThrowOnError extends boolean = false>(
  * Read Item
  */
 export const readItem = <ThrowOnError extends boolean = false>(
-  options?: OptionsLegacyParser<unknown, ThrowOnError>,
+  options?: OptionsLegacyParser<ReadItemData, ThrowOnError>,
 ) => {
   return (options?.client ?? client).get<
     ReadItemResponse,

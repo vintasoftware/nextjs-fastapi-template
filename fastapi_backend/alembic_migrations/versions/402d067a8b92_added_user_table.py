@@ -1,10 +1,11 @@
 """Added user table
 
 Revision ID: 402d067a8b92
-Revises: 
+Revises:
 Create Date: 2024-09-27 14:01:44.155160
 
 """
+
 from typing import Sequence, Union
 
 import fastapi_users_db_sqlalchemy

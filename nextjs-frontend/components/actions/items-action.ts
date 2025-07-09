@@ -6,7 +6,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { itemSchema } from "@/lib/definitions";
 
-export async function fetchItems() {
+export async function fetchItems(page: number = 1, size: number = 10) {
   const cookieStore = await cookies();
   const token = cookieStore.get("accessToken")?.value;
 
@@ -15,6 +15,10 @@ export async function fetchItems() {
   }
 
   const { data, error } = await readItem({
+    query: {
+      page: page,
+      size: size,
+    },
     headers: {
       Authorization: `Bearer ${token}`,
     },

@@ -516,3 +516,4 @@ websockets==14.1 \
     --hash=sha256:bc6ccf7d54c02ae47a48ddf9414c54d48af9c01076a2e1023e3b486b6e72c707 \
     --hash=sha256:eb6d38971c800ff02e4a6afd791bbe3b923a9a57ca9aeab7314c21c84bf9ff05 \
     --hash=sha256:ed907449fe5e021933e46a3e65d651f641975a768d0649fee59f10c2985529ed
+fastapi-pagination==0.13.3

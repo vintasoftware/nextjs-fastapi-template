@@ -1,6 +1,8 @@
 from uuid import UUID
 
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Query
+from fastapi_pagination import Page, Params
+from fastapi_pagination.ext.sqlalchemy import apaginate
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 
@@ -12,14 +14,20 @@ from app.users import current_active_user
 router = APIRouter(tags=["item"])
 
 
-@router.get("/", response_model=list[ItemRead])
+def transform_items(items):
+    return [ItemRead.model_validate(item) for item in items]
+
+
+@router.get("/", response_model=Page[ItemRead])
 async def read_item(
     db: AsyncSession = Depends(get_async_session),
     user: User = Depends(current_active_user),
+    page: int = Query(1, ge=1, description="Page number"),
+    size: int = Query(10, ge=1, le=100, description="Page size"),
 ):
-    result = await db.execute(select(Item).filter(Item.user_id == user.id))
-    items = result.scalars().all()
-    return [ItemRead.model_validate(item) for item in items]
+    params = Params(page=page, size=size)
+    query = select(Item).filter(Item.user_id == user.id)
+    return await apaginate(db, query, params, transformer=transform_items)
 
 
 @router.post("/", response_model=ItemRead)
