@@ -1,6 +1,6 @@
 [project]
 name = "app"
-version = "0.0.4"
+version = "0.0.5"
 description = ""
 authors = [{ name = "Anderson Resende", email = "anderson@vinta.com.br" }]
 requires-python = ">=3.12,<3.13"
