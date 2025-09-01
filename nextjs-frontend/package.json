@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint lint",
+    "lint": "eslint",
     "lint:fix": "eslint lint --fix",
     "generate-client": "openapi-ts",
     "test": "jest",
