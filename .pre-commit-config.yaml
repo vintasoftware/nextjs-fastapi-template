@@ -31,7 +31,7 @@ repos:
     hooks:
       - id: frontend-lint
         name: run frontend lint
-        entry: sh -c 'cd nextjs-frontend && npm run lint'
+        entry: sh -c 'cd nextjs-frontend && pnpm run lint'
         language: system
         types: [ file ]
         files: ^nextjs-frontend/.*\.(js|jsx|ts|tsx)$
