@@ -53,9 +53,9 @@ You can check the .env.example file for more information about the variables.
 
 **Frontend (`nextjs-frontend/.env.local`):**
 
-Copy the `.env.example` files to `.env`. These values are unlikely to change, so you can leave them as they are.
+Copy the `.env.example` files to `.env.local`. These values are unlikely to change, so you can leave them as they are.
    ```bash
-   cd nextjs-frontend && cp .env.example .env
+   cd nextjs-frontend && cp .env.example .env.local
    ```
 
 ### Running the Database

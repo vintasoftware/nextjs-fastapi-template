@@ -7,6 +7,10 @@ frontend TypeScript client, `nextjs-frontend`.
     The backend and the frontend are versioned together, that is, they have the same version number.
     When you update the backend, you should also update the frontend to the same version.
 
+## 0.0.6 <small>September 1, 2025</small> {id="0.0.6"}
+
+- Upgrade Next.js version to 15.5.0
+
 ## 0.0.5 <small>July 9, 2025</small> {id="0.0.5"}
 
 - Items Pagination
