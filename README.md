@@ -1,6 +1,6 @@
 ## Next.js FastAPI Template
 
-<a href="https://www.vintasoftware.com/blog/next-js-fastapi-template"><img src="images/banner.png" alt="Next.js FastAPI Template" width="auto"></a>
+<a href="https://www.vintasoftware.com/blog/next-js-fastapi-template"><img src="docs/images/banner.png" alt="Next.js FastAPI Template" width="auto"></a>
 <p align="center">
     <em>Next.js FastAPI Template: Python + Modern TypeScript stack with Zod validation.</em>
 </p>
