@@ -72,3 +72,6 @@ docker-test-backend: ## Run tests for the backend
 
 docker-test-frontend: ## Run tests for the frontend
 	$(DOCKER_COMPOSE) run --rm frontend pnpm run test
+
+docker-up-mailhog: ## Start mailhog server
+	$(DOCKER_COMPOSE) up mailhog
